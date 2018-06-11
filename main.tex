@@ -26,7 +26,7 @@
 \setbeameroption{show notes on second screen=right} % Both
 \setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino}
 
-
+\usepackage{dirtytalk} % PARA CITAR, CITAS, QUOTES.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,27 +93,31 @@
 
 
 \begin{frame}{Motivación y objetivos I}
-debido a mis pe
+\vspace{-2em}
+Las redes definidas por software (SDN) surgen a principios de 2010 \alert{por necesidad}:
 \begin{itemize}
-	\item Regular
-	\item \textsc{Small caps}
-	\item \textsc{all small caps}
-	\item ALL CAPS
+	\item La mayoría de las redes tradicionales fueron diseñadas para aplicaciones cliente-servidor que se ejecutan en una infraestructura no virtualizada.
 \end{itemize}
-They can either be set at once for every title type or individually.
- \note[item]{Thank the audience for being awake.}
+
+SDN se ha establecido en la adultez temprana como un producto conocido.
+
+Es una realidad que muchas de las empresas y proveedores de servicios de todo el mundo ya han adoptado.
+
+
+ \note[item]{
+ 	SDN ha crecido más allá de su adolescencia y euforia prematura...}
+ \note[item]{No es una próxima novedad en el horizonte de la creación de redes...}
 \end{frame}
 
 
 \begin{frame}{Motivación y objetivos II}
-\themename supports 4 different title formats:
-\begin{itemize}
-\item Regular
-\item \textsc{Small caps}
-\item \textsc{all small caps}
-\item ALL CAPS
-\end{itemize}
-They can either be set at once for every title type or individually.
+\vspace{-2em}
+\themename \textit{Rohit Mehra} y \textit{Brad Casemore} en su previsión sobre SDN publicada en 2016:
+\vspace{1.3em}
+
+\textit{\say{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models}}
+
+\note[item]{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}
 \end{frame}
 
 
@@ -161,13 +165,25 @@ They can either be set at once for every title type or individually.
 	\end{tikzpicture}
 	
 	\vspace{1.5em}\source{\href{https://www.channelinsider.com/networking/slideshows/enterprise-interest-in-sdn-adoption-picks-up-steam.html}{Channel Insider Networking - Michael Vizard}}
+	
+	 \note[item]{Debido a la creciente demanda en las redes, en estos años se ha visto una evolución en el mercado de redes definidas por software.}
+	 \note[item]{Es por esto y por el TFG DE RUBEN que surge el proyecto.}
 \end{figure}
 \end{frame}
 
 
 
 
-\section{Ámbito de Trabajo}
+
+
+
+
+
+
+
+
+
+\section{Ámbito de trabajo}
 \section{Definición del escenario de aplicación}
 \section{Routing multicamino con balanceador de carga}
 \section{Implementación}
@@ -178,7 +194,6 @@ They can either be set at once for every title type or individually.
 
 
 
-\section{Introduction}
 
 \begin{frame}[fragile]{Metropolis}
 
@@ -202,7 +217,6 @@ Sections group slides of the same topic
 for which \themename provides a nice progress indicator \ldots
 \end{frame}
 
-\section{Title formats}
 
 \begin{frame}{Metropolis title formats}
 \themename supports 4 different title formats:
@@ -250,7 +264,6 @@ This title format is not as problematic as the \texttt{allsmallcaps} format, but
 \end{frame}
 }
 
-\section{Elements}
 
 \begin{frame}[fragile]{Typography}
 \begin{verbatim}The theme provides sensible defaults to
@@ -443,8 +456,6 @@ Veni, Vidi, Vici
 \begin{frame}{References}
 Some references to showcase [allowframebreaks] \cite{knuth92,ConcreteMath,Simpson,Er01,greenwade93}
 \end{frame}
-
-\section{Conclusion}
 
 \begin{frame}{Summary}
 
