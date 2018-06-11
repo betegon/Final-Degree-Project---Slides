@@ -22,6 +22,12 @@
 \usepackage{hyperref} % LINKS
 
 
+\usepackage{pgfpages} %PARA LAS NOTAS
+\setbeameroption{show notes on second screen=right} % Both
+\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,13 +82,40 @@
 
 \begin{document}
 	\maketitle
-	
 	\begin{frame}{Table of contents}
-	\setbeamertemplate{section in toc}[sections numbered]
-	\tableofcontents[hideallsubsections]
-\end{frame}
+		\setbeamertemplate{section in toc}[sections numbered]
+		\tableofcontents[hideallsubsections]
+		 \note[item]{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}
+		 \note[item]{COMPROBARLO CON LAS PANTALLAS DE LA PRESENTACIÓN (MI ORDE NO TIENE VGA)}
+	\end{frame}
 
 \section{Introducción}
+
+
+\begin{frame}{Motivación y objetivos I}
+debido a mis pe
+\begin{itemize}
+	\item Regular
+	\item \textsc{Small caps}
+	\item \textsc{all small caps}
+	\item ALL CAPS
+\end{itemize}
+They can either be set at once for every title type or individually.
+ \note[item]{Thank the audience for being awake.}
+\end{frame}
+
+
+\begin{frame}{Motivación y objetivos II}
+\themename supports 4 different title formats:
+\begin{itemize}
+\item Regular
+\item \textsc{Small caps}
+\item \textsc{all small caps}
+\item ALL CAPS
+\end{itemize}
+They can either be set at once for every title type or individually.
+\end{frame}
+
 
 % DIAPOSITIVA DEL HISTOGRAMA SOBRE LA ADOPCIÓN DE SDN
 \begin{frame}[fragile]{Adopción de las redes SDN}
@@ -95,16 +128,17 @@
 	}
 	
 	\pgfplotstableread[header=false]{
-		74 {Suma de las emplean o emplearán}
+		74 {Suma de las que emplean o emplearán}
 		26 {No}
-		25 {En un futuro}
-		21 {En los prox. 2 años}
+		25 {En un futuro, sin fecha}
+		21 {En los próximos 2 años}
 		28 {Sí}
 	}\datatable
 	
+	\hspace*{-6em}
 	\begin{tikzpicture}[yscale=0.7,xscale=0.7] %TAMAÑO DE LA GRÁFICA
 	\begin{axis}[
-	title= Emplean SDN,
+	title= Adopción de las redes SDN en las empresas IT en 2016.,
 	xbar, bar shift=0pt,
 	enlarge y limits=0.2,
 	xmin=0,
@@ -115,7 +149,7 @@
 	% xmajorgrids = true, %CON ESTO DESCOMENTADO MUESTRA UN GRID, SINO SOLO LAS BARRAS, SIN GRID.
 	bar width=8mm, 
 	width=12cm, height=8.5cm,  %CAMBIAR TAMAÑO DE LA GRAFICA, HORIZONTAL Y VERTICAL, HEIGHT PARA CAMBIAR EL  ESPACIO ENTRE BARRAS
-	xlabel={\% de empresas},
+	xlabel={\% de las empresas IT encuestadas},
 	nodes near coords={\pgfmathprintnumber\pgfplotspointmeta\%},
 	nodes near coords align={horizontal}, 
 	]
@@ -125,7 +159,8 @@
 	}
 	\end{axis}
 	\end{tikzpicture}
-	\source{\href{https://www.channelinsider.com/networking/slideshows/enterprise-interest-in-sdn-adoption-picks-up-steam.html}{Channel Insider Networking - Michael Vizard}}
+	
+	\vspace{1.5em}\source{\href{https://www.channelinsider.com/networking/slideshows/enterprise-interest-in-sdn-adoption-picks-up-steam.html}{Channel Insider Networking - Michael Vizard}}
 \end{figure}
 \end{frame}
 
