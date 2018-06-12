@@ -1,4 +1,6 @@
 \documentclass[10pt,spanish]{beamer}
+%%documentclass[notes,spanish,10pt]{beamer}       % print frame + notes
+
 % TILDES Y DEMÁS EN ESPAÑOL
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
@@ -23,10 +25,17 @@
 
 
 \usepackage{pgfpages} %PARA LAS NOTAS
-\setbeameroption{show notes on second screen=right} % Both
+\setbeameroption{show notes}                        
+\setbeameroption{show notes on second screen=right} %% en terminal, $: pdfpc main.pdf --notes=right
+%https://bugs.kde.org/show_bug.cgi?id=152585
 \setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino}
 
+
 \usepackage{dirtytalk} % PARA CITAR, CITAS, QUOTES.
+
+%TODOs notas:
+\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes} %% PARA QUE NO APAREZCAN [disable]
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,13 +89,21 @@
 \pgfplotsset{width=10cm,compat=1.9}
 \usepackage{pgfplotstable}
 
+%%PARA LOS ITEMS DE LAS LISTAS
+\setbeamertemplate{itemize items}{>>}
+
+
+%% ---- COMIENZA EL DOCUMENTO ----
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 	\maketitle
 	\begin{frame}{Table of contents}
 		\setbeamertemplate{section in toc}[sections numbered]
 		\tableofcontents[hideallsubsections]
-		 \note[item]{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}
-		 \note[item]{COMPROBARLO CON LAS PANTALLAS DE LA PRESENTACIÓN (MI ORDE NO TIENE VGA)}
+		\note[item]{\todo[inline]{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}}
+		\note[item]{\todo[inline]{COMPROBARLO CON LAS PANTALLAS DE LA PRESENTACIÓN (MI ORDE NO TIENE VGA, PREGUNTAR SI HAY HDMI Y LLEVAR EL MIO POR SI ACASO)}}
+		\note[item]{\todo[inline]{EN LA TERMINAL, \$: pdfpc main.pdf - -notes=right}}	
+		\note[item]{\todo[inline]{https://bugs.kde.org/show\_bug.cgi?id=152585}}
 	\end{frame}
 
 \section{Introducción}
@@ -104,70 +121,89 @@ SDN se ha establecido en la adultez temprana como un producto conocido.
 Es una realidad que muchas de las empresas y proveedores de servicios de todo el mundo ya han adoptado.
 
 
- \note[item]{
- 	SDN ha crecido más allá de su adolescencia y euforia prematura...}
- \note[item]{No es una próxima novedad en el horizonte de la creación de redes...}
+\note{\large \vfill
+	\begin{center}
+	\begin{enumerate}
+		\item NO son la solución a un problema sin resolver sino que resuelven de una forma mas eficiente que las soluciones tradicionales. 		
+		\vspace{2em}
+		\item SDN ha crecido más allá de su adolescencia y euforia prematura...	
+		\vspace{2em}	
+		\item NO es una próxima novedad en el horizonte de la creación de redes...	
+		\vspace{2em}
+		\vfill
+	\end{enumerate}
+	\end{center}}
 \end{frame}
 
 
 \begin{frame}{Motivación y objetivos II}
 \vspace{-2em}
-\themename \textit{Rohit Mehra} y \textit{Brad Casemore} en su previsión sobre SDN publicada en 2016:
+\textit{Rohit Mehra} y \textit{Brad Casemore} en su previsión sobre SDN publicada en 2016:
 \vspace{1.3em}
 
 \textit{\say{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models}}
 
-\note[item]{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}
+
+\note[item]{\todo[inline]{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}}
 \end{frame}
 
 
 % DIAPOSITIVA DEL HISTOGRAMA SOBRE LA ADOPCIÓN DE SDN
-\begin{frame}[fragile]{Adopción de las redes SDN}
+\begin{frame}[fragile]{Moivación y objetivos III}
 \begin{figure}
-	\centering
-	\pgfplotsset{
-		select row/.style={
-			x filter/.code={\ifnum\coordindex=#1\else\def\pgfmathresult{}\fi}
-		}
+\centering
+\pgfplotsset{
+	select row/.style={
+		x filter/.code={\ifnum\coordindex=#1\else\def\pgfmathresult{}\fi}
 	}
-	
-	\pgfplotstableread[header=false]{
-		74 {Suma de las que emplean o emplearán}
-		26 {No}
-		25 {En un futuro, sin fecha}
-		21 {En los próximos 2 años}
-		28 {Sí}
-	}\datatable
-	
-	\hspace*{-6em}
-	\begin{tikzpicture}[yscale=0.7,xscale=0.7] %TAMAÑO DE LA GRÁFICA
-	\begin{axis}[
-	title= Adopción de las redes SDN en las empresas IT en 2016.,
-	xbar, bar shift=0pt,
-	enlarge y limits=0.2,
-	xmin=0,
-	ytick={0,...,5},
-	yticklabel style={text width=3cm,align=right},
-	yticklabels from table={\datatable}{1},
-	yticklabel style={align=right},
-	% xmajorgrids = true, %CON ESTO DESCOMENTADO MUESTRA UN GRID, SINO SOLO LAS BARRAS, SIN GRID.
-	bar width=8mm, 
-	width=12cm, height=8.5cm,  %CAMBIAR TAMAÑO DE LA GRAFICA, HORIZONTAL Y VERTICAL, HEIGHT PARA CAMBIAR EL  ESPACIO ENTRE BARRAS
-	xlabel={\% de las empresas IT encuestadas},
-	nodes near coords={\pgfmathprintnumber\pgfplotspointmeta\%},
-	nodes near coords align={horizontal}, 
-	]
-	
-	\pgfplotsinvokeforeach{0,...,5}{
-		\addplot table [select row=#1, y expr=#1] {\datatable};
-	}
-	\end{axis}
-	\end{tikzpicture}
-	
-	\vspace{1.5em}\source{\href{https://www.channelinsider.com/networking/slideshows/enterprise-interest-in-sdn-adoption-picks-up-steam.html}{Channel Insider Networking - Michael Vizard}}
-	
-	 \note[item]{Debido a la creciente demanda en las redes, en estos años se ha visto una evolución en el mercado de redes definidas por software.}
-	 \note[item]{Es por esto y por el TFG DE RUBEN que surge el proyecto.}
+}
+
+\pgfplotstableread[header=false]{
+	74 {Suma de las que emplean o emplearán}
+	26 {No}
+	25 {En un futuro, sin fecha}
+	21 {En los próximos 2 años}
+	28 {Sí}
+}\datatable
+
+\hspace*{-6em}
+\begin{tikzpicture}[yscale=0.7,xscale=0.7] %TAMAÑO DE LA GRÁFICA
+\begin{axis}[
+title= Adopción de las redes SDN en las empresas IT en 2016.,
+xbar, bar shift=0pt,
+enlarge y limits=0.2,
+xmin=0,
+ytick={0,...,5},
+yticklabel style={text width=3cm,align=right},
+yticklabels from table={\datatable}{1},
+yticklabel style={align=right},
+% xmajorgrids = true, %CON ESTO DESCOMENTADO MUESTRA UN GRID, SINO SOLO LAS BARRAS, SIN GRID.
+bar width=8mm, 
+width=12cm, height=8.5cm,  %CAMBIAR TAMAÑO DE LA GRAFICA, HORIZONTAL Y VERTICAL, HEIGHT PARA CAMBIAR EL  ESPACIO ENTRE BARRAS
+xlabel={\% de las empresas IT encuestadas},
+nodes near coords={\pgfmathprintnumber\pgfplotspointmeta\%},
+nodes near coords align={horizontal}, 
+]
+
+\pgfplotsinvokeforeach{0,...,5}{
+	\addplot table [select row=#1, y expr=#1] {\datatable};
+}
+\end{axis}
+\end{tikzpicture}
+
+\vspace{1.5em}\source{\href{https://www.channelinsider.com/networking/slideshows/enterprise-interest-in-sdn-adoption-picks-up-steam.html}{Channel Insider Networking - Michael Vizard}}
+
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Debido a la creciente demanda en las redes, en estos años se ha visto una evolución en el mercado de SDN.	
+			\vspace{2em}	
+			\item Es por esto y por el TFG DE RUBEN que surge el proyecto.	
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+
 \end{figure}
 \end{frame}
 
@@ -175,9 +211,17 @@ Es una realidad que muchas de las empresas y proveedores de servicios de todo el
 
 
 
+\begin{frame}{Motivación y objetivos IV}
+\begin{alertblock}{OBJETIVOS}
+\begin{itemize}
+	\item Exponer dos casos de uso real de las redes SDN.
+	\item Aplicar técnicas de ingeniería de tráfico en esos casos.
+	\item Conocer el controlador Ryu y 
+\end{itemize}
+\end{alertblock}
 
-
-
+\note[item]{\todo[inline]{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\end{frame}
 
 
 
