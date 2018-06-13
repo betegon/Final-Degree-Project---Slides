@@ -3,11 +3,16 @@
 
 % TILDES Y DEMÁS EN ESPAÑOL
 \usepackage[spanish]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-
-\usetheme{metropolis}
+\usepackage{fontspec} 
+\setmainfont{Fira Sans Ultralight} 
+\setsansfont{Fira Sans Ultralight} 
+\setmonofont{Fira Mono Regular} 
+\usetheme[numbering=fraction, progressbar=head]{metropolis}
 \usepackage{appendixnumberbeamer}
+%%	NUMEROS COMO FRACCIONS 4/20 Y BARRA DE PROGRESO EN CADA DIAPOSITIVA (TOO MUCH?)
+%\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book} %TEXTO QUE SE LEE MEJOR PARA UNA SALA GRANDE Y PROYECTOR CON POCA POTENCIA
+
+\usepackage{xcolor} % PARA COLOREAR LAS NOTAS (COMO SI FUERAN TODOs)
 
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
@@ -16,7 +21,7 @@
 \usepgfplotslibrary{dateplot}
 \usepackage{xspace}
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
-\setbeamertemplate{footline}[frame number]
+% \setbeamertemplate{footline}[frame number] % PARA PONER EL NUMERO DE PAGINA EN FRACCIÓN: 7/20
 
 % Comando para poder añadir la fuente en mis figuras
 \newcommand{\source}[1]{{\textbf{Fuente}: {#1}} }
@@ -28,7 +33,12 @@
 \setbeameroption{show notes}                        
 \setbeameroption{show notes on second screen=right} %% en terminal, $: pdfpc main.pdf --notes=right
 %https://bugs.kde.org/show_bug.cgi?id=152585
-\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino}
+\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino} % MUY IMPORTANTE, ASÍ MUESTRA TAN SOLO UNA NOTA EN  BLANCO EN VEZ DE MOSTRAR UNA DIAPO DE NOTA ESTRUCTURADA (UNA PARTE ES LA NOTA EN SI, OTRA LA SIGUIENTE DIAPO Y OTRA EL ARBOL (SECCION->SUBSECCION->TITLE _RAME) Y NO QUEREMOS ESO.
+%para que funcionen bien las notas, pero mandarlo a tomar por saco, sin ello no se notaba diferencia
+\makeatletter\def\beamer@framenotesbegin{%atbeginningofslide
+\usebeamercolor[fg]{normal text}\gdef\beamer@noteitems{}%
+\gdef\beamer@notes{}%
+}\makeatother
 
 
 \usepackage{dirtytalk} % PARA CITAR, CITAS, QUOTES.
@@ -94,16 +104,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 	\maketitle
-	\begin{frame}{Table of contents}
+	\begin{frame}{Índice}
 		\setbeamertemplate{section in toc}[sections numbered]
 		\tableofcontents[hideallsubsections]
-		\note[item]{\todo[inline]{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}}
-		\note[item]{\todo[inline]{COMPROBARLO CON LAS PANTALLAS DE LA PRESENTACIÓN (MI ORDE NO TIENE VGA, PREGUNTAR SI HAY HDMI Y LLEVAR EL MIO POR SI ACASO)}}
-		\note[item]{\todo[inline]{EN LA TERMINAL, \$: pdfpc main.pdf - -notes=right}}	
-		\note[item]{\todo[inline]{https://bugs.kde.org/show\_bug.cgi?id=152585}}
-		\note[item]{\todo[inline,color=pink]{ESTOY COMPILANDO CON LUALATEX, PARA PODER USAR LA FUENTE: fira. con xelatex no me funciona (se supone que debería) y con pdflatex es una letra diferente(NO CONSIGUE CARGAR BIEN fira). si me gusta la letra, seguir compilando con lualatex, sino con pdflatex que es la letra de siempre (aunque me gusta mas FIRA).}}
-		
-	\end{frame}
+		\note[item]{\textcolor{red}{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}}
+		\note[item]{\textcolor{red}{COMPROBARLO CON LAS PANTALLAS DE LA PRESENTACIÓN (MI ORDE NO TIENE VGA, PREGUNTAR SI HAY HDMI Y LLEVAR EL MIO POR SI ACASO)}}
+		\note[item]{\textcolor{red}{EN LA TERMINAL, \$: pdfpc main.pdf - -notes=right}}
+		\note[item]{\textcolor{red}{https://bugs.kde.org/show\_bug.cgi?id=152585}}
+		\note[item]{\textcolor{red}{ESTOY COMPILANDO DESDE OVERLEAF CON XUALATEX. CON XELATEX PUEDE FUNCIONAR CREO, PERO CON PDFlatex no. PDFlatex no entiende la fuente (fira) y utiliza las suyas}}
+			\note[item]{\textcolor{red}{CUIDADO, SE ME PONE EL TEXTO DE COLOR BLANCO Y NO SE VE, ES CULPA DE USAR NOTAS (PFGPAGES) Y XELATEX}}
+            \note[item]{\textcolor{red}{SI USO TODOs SE JOROBA LA FUENTE Y DA ERRORES. POR ESO HE PUESTO EL TEXTO QUE NO ES DE NOTAS SINO DE COSAS PARA CAMBIAR DE LAS DIAPOSITIVAS EN ROJO}}
+\end{frame}
 
 \section{Introducción}
 
@@ -143,7 +154,7 @@ Es una realidad que muchas de las empresas y proveedores de servicios de todo el
 \textit{\say{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models}}
 
 
-\note[item]{\todo[inline]{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}}
+\note[item]{\textcolor{red}{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}}
 \end{frame}
 
 
@@ -219,7 +230,7 @@ nodes near coords align={horizontal},
 \end{itemize}
 \end{alertblock}
 
-\note[item]{\todo[inline]{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\note[item]{\textcolor{red}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
 \end{frame}
 
 
