@@ -12,7 +12,7 @@
 %%	NUMEROS COMO FRACCIONS 4/20 Y BARRA DE PROGRESO EN CADA DIAPOSITIVA (TOO MUCH?)
 %\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book} %TEXTO QUE SE LEE MEJOR PARA UNA SALA GRANDE Y PROYECTOR CON POCA POTENCIA
 
-\usepackage{xcolor} % PARA COLOREAR LAS NOTAS (COMO SI FUERAN TODOs)
+%\usepackage{xcolor} % PARA COLOREAR LAS NOTAS (COMO SI FUERAN TODOs)
 
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
@@ -33,18 +33,27 @@
 \setbeameroption{show notes}                        
 \setbeameroption{show notes on second screen=right} %% en terminal, $: pdfpc main.pdf --notes=right
 %https://bugs.kde.org/show_bug.cgi?id=152585
-\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino} % MUY IMPORTANTE, ASÍ MUESTRA TAN SOLO UNA NOTA EN  BLANCO EN VEZ DE MOSTRAR UNA DIAPO DE NOTA ESTRUCTURADA (UNA PARTE ES LA NOTA EN SI, OTRA LA SIGUIENTE DIAPO Y OTRA EL ARBOL (SECCION->SUBSECCION->TITLE _RAME) Y NO QUEREMOS ESO.
+
+
+\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}% MUY IMPORTANTE, ASÍ MUESTRA TAN SOLO UNA NOTA EN  BLANCO EN VEZ DE MOSTRAR UNA DIAPO DE NOTA ESTRUCTURADA (UNA PARTE ES LA NOTA EN SI, OTRA LA SIGUIENTE DIAPO Y OTRA EL ARBOL (SECCION->SUBSECCION->TITLE _RAME) Y NO QUEREMOS ESO.
+%\usepackage{palatino}  % SI DESCOMENTO ESTO SE ME JOROBAN TODAS LAS FUENTES DE LAS DIAPOS. NO TOCAR LA FUENTE DE LAS NOTAS.
+
+
+
 %para que funcionen bien las notas, pero mandarlo a tomar por saco, sin ello no se notaba diferencia
-\makeatletter\def\beamer@framenotesbegin{%atbeginningofslide
-\usebeamercolor[fg]{normal text}\gdef\beamer@noteitems{}%
-\gdef\beamer@notes{}%
-}\makeatother
+%\makeatletter\def\beamer@framenotesbegin{%atbeginningofslide
+%\usebeamercolor[fg]{normal text}\gdef\beamer@noteitems{}%
+%\gdef\beamer@notes{}%
+%}\makeatother
 
 
 \usepackage{dirtytalk} % PARA CITAR, CITAS, QUOTES.
 
 %TODOs notas:
-\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes} %% PARA QUE NO APAREZCAN [disable]
+%\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes} %% PARA QUE NO APAREZCAN [disable]
+
+\usepackage{xcolor}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,7 +239,7 @@ nodes near coords align={horizontal},
 \end{itemize}
 \end{alertblock}
 
-\note[item]{\textcolor{red}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
 \end{frame}
 
 
