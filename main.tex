@@ -52,7 +52,9 @@
 %TODOs notas:
 %\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes} %% PARA QUE NO APAREZCAN [disable]
 
-\usepackage{xcolor}
+\usepackage{xcolor} % CAMBIAR TEXTO DE COLOR (PARA LAS NOTAS)
+\usepackage{wrapfig} % FIGURAS  A UN LADO, CON TEXTO AL OTRO.
+
 
 
 
@@ -123,6 +125,7 @@
 		\note[item]{\textcolor{red}{ESTOY COMPILANDO DESDE OVERLEAF CON XUALATEX. CON XELATEX PUEDE FUNCIONAR CREO, PERO CON PDFlatex no. PDFlatex no entiende la fuente (fira) y utiliza las suyas}}
 			\note[item]{\textcolor{red}{CUIDADO, SE ME PONE EL TEXTO DE COLOR BLANCO Y NO SE VE, ES CULPA DE USAR NOTAS (PFGPAGES) Y XELATEX}}
             \note[item]{\textcolor{red}{SI USO TODOs SE JOROBA LA FUENTE Y DA ERRORES. POR ESO HE PUESTO EL TEXTO QUE NO ES DE NOTAS SINO DE COSAS PARA CAMBIAR DE LAS DIAPOSITIVAS EN ROJO}}
+            \note[item]{Explicar que estos son los capítulos del trabajo, el índice hace de "Estructura del proyecto".}
 \end{frame}
 
 \section{Introducción}
@@ -168,7 +171,7 @@ Es una realidad que muchas de las empresas y proveedores de servicios de todo el
 
 
 % DIAPOSITIVA DEL HISTOGRAMA SOBRE LA ADOPCIÓN DE SDN
-\begin{frame}[fragile]{Moivación y objetivos III}
+\begin{frame}[fragile]{Motivación y objetivos III}
 \begin{figure}
 \centering
 \pgfplotsset{
@@ -231,22 +234,142 @@ nodes near coords align={horizontal},
 
 
 \begin{frame}{Motivación y objetivos IV}
-\begin{alertblock}{OBJETIVOS}
+\vspace*{-2em}
+\begin{alertblock}{\LARGE\textbf{OBJETIVOS}}
 \begin{itemize}
+	\vspace{1.2em}
 	\item[\textbf{>>}] Exponer dos casos de uso real de las redes SDN.
-	\item[\textbf{>>>>}] Aplicar técnicas de ingeniería de tráfico en esos casos.
-	\item[\textbf{>>>>>>}] Conocer el controlador Ryu y 
+	\vspace{1.3em}
+    \item[\textbf{>>>>}] Aplicar técnicas de ingeniería de tráfico en dichos casos.
+    \vspace{1.3em}
+	\item[\textbf{>>>>>>}] Implementarlos en Mininet haciendo uso del controlador \texttt{Ryu} y un script en \texttt{Python}.
 \end{itemize}
 \end{alertblock}
-
 \note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\end{frame}
+
+\section{Ámbito de trabajo}
+\begin{frame}{Estado del arte}
+\vspace{2em}
+\begin{figure}[h!]
+\centering
+\hspace*{-0.30in}% PARA AJUSTAR IZQ-DCH LA FIGURA.
+\tikzset{every picture/.style={line width=0.5pt}} %set default line width to 0.75pt      
+\resizebox{0.9\textwidth}{!}{  % ESCALAR LA FIGURA, CON ESTE COMANDO SE QUE NO SE ME VA A SALIR FUERA DE TEXTWIDTH
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,379); %set diagram left start at 0, and has height of 379
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (232.61,255.91) -- (595.88,255.91) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (93.66,347) -- (456.93,347) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (93.66,347) -- (232.61,255.91) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (456.93,347) -- (595.88,255.91) ;
+
+
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (232.42, 268.26) rectangle (306.49, 279.59)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (232.42, 279.59) rectangle (306.49, 290.91)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (232.42, 313.36) rectangle (306.49, 324.69)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (232.42, 324.69) rectangle (306.49, 336.01)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (382.09, 267.7) rectangle (456.17, 279.02)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (382.09, 279.02) rectangle (456.17, 290.35)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (382.09, 313.36) rectangle (456.17, 324.69)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (382.09, 324.69) rectangle (456.17, 336.01)   ;
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]    (306.49,279.59) -- (382.09,279.02) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]    (306.49,324.69) -- (382.09,324.69) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]    (419.13,313.36) -- (419.13,290.35) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]    (269.46,313.36) -- (269.46,290.91) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (232.59,134.05) -- (595.86,134.05) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (93.65,225.14) -- (456.92,225.14) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (93.65,225.14) -- (232.59,134.05) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (456.92,225.14) -- (595.86,134.05) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (232.61,16.59) -- (595.88,16.59) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (93.66,107.69) -- (456.93,107.69) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (93.66,107.69) -- (232.61,16.59) ;
+
+
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]  [dash pattern={on 4.5pt off 4.5pt}]  (456.93,107.69) -- (595.88,16.59) ;
+
+
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (243.67, 47.04) rectangle (300.84, 70.14)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (321.25, 47.04) rectangle (378.41, 70.14)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (398.01, 47.04) rectangle (455.18, 70.14)   ;
+\draw    (124, 72.67) rectangle (124, 72.67)   ;
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.5]   (280, 161.3) rectangle (420, 187.14)   ;
+\draw    (186,320) .. controls (247,268) and (70.67,336) .. (116,280) ;
+\draw [shift={(116,280)}, rotate = 486.99] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw [shift={(186,320)}, rotate = 318.36] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw    (136,260) .. controls (176,230) and (106,240) .. (146,210) ;
+\draw [shift={(146,210)}, rotate = 501.69] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw [shift={(136,260)}, rotate = 321.47] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw    (146,139) .. controls (186,109) and (116,119) .. (156,89) ;
+\draw [shift={(156,89)}, rotate = 501.69] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw [shift={(146,139)}, rotate = 321.47] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw    (200,201) .. controls (261,149) and (84.67,217) .. (130,161) ;
+\draw [shift={(130,161)}, rotate = 486.99] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw [shift={(200,201)}, rotate = 318.36] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw    (66, 139.59) rectangle (186, 160)   ;
+\draw    (46, 260) rectangle (186, 280)   ;
+
+\draw (269.15,273.46) node [scale=0.7] [align=left] {Flow de datos};
+\draw (270.07,285.16) node [scale=0.7] [align=left] {Forwarding};
+\draw (269.15,318.56) node [scale=0.7] [align=left] {Flow de datos};
+\draw (270.07,330.26) node [scale=0.7] [align=left] {Forwarding};
+\draw (418.82,272.9) node [scale=0.7] [align=left] {Flow de datos};
+\draw (419.74,284.59) node [scale=0.7] [align=left] {Forwarding};
+\draw (418.82,318.56) node [scale=0.7] [align=left] {Flow de datos};
+\draw (419.74,330.26) node [scale=0.7] [align=left] {Forwarding};
+\draw (349.82,174.89) node [scale=1.44] [align=left] {Controlador};
+\draw (273.89,58.59) node  [align=left] {App};
+\draw (351.47,58.59) node  [align=left] {App};
+\draw (428.23,58.59) node  [align=left] {App};
+\draw (561.44,257.97) node  [align=left] {\textbf{Plano de datos}\\};
+\draw (556.44,141.17) node  [align=left] {\textbf{Plano de control}\\\\};
+\draw (553.11,26.3) node  [align=left] {\textbf{Plano de aplicación}\\\\};
+\draw (126,150) node  [align=left] {NortBound API};
+\draw (116,270) node  [align=left] {SouthBound API};
+\end{tikzpicture}
+}
+\caption{Arquitectura de alto nivel SDN.}
+\label{fig: capas_sdn}
+\end{figure}
+
+\note[item]{SDN separa Plano de Control - Plano de Datos}
+\note[item]{Simplifica la operación en el plano de datos -> dispositivos de red menos costosos.}
+\note[item]{centraliza el ''estado'' de la red y la toma de decisiones.}
+\note[item]{Programabilidad de la red, administración simplificada y autónoma.}
+\note[item]{Estimula la aplicacion \Rightarrow abre mercados y oportunidades para todo el sector.}
+\note[item]{\textcolor{blue}{COMPROBAR SI EXISTEN MÁS DIAPOS CON EL MISMO TITULO PARA PONER: I, II, III, IV, V, ...}}
 \end{frame}
 
 
 
 
 
-\section{Ámbito de trabajo}
 \section{Definición del escenario de aplicación}
 \section{Routing multicamino con balanceador de carga}
 \section{Implementación}
