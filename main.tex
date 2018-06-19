@@ -521,9 +521,7 @@ Protocolo estandarizado por Open Networking Foundation en
 El tráfico se clasifica en flows en función de sus características.  
 
 
-\note[item]{}
-\note[item]{}
-\note[item]{}
+\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
 \note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
 \end{frame}
 
@@ -666,44 +664,161 @@ El tráfico se clasifica en flows en función de sus características.
 \vspace*{-2em}
 \begin{alertblock}{\LARGE\textbf{Ingeniería de Tráfico}}
 \vspace{1.2em}
-\large Es una aplicación de red importante que estudia
+Es una aplicación de red importante que estudia
 la medición y gestión del tráfico.
+\vspace{0.6em}
 
 Diseña mecanismos de enrutamiento para guiar el tráfico de red a fin de mejorar la utilización de los recursos y cumplir mejor los requisitos de QoS.
 \end{alertblock}
-\note[item]{\textcolor{red}{ESTAS NOTAS YA SE HABRÁN CONTANDO EN DIAPOS ANTERIORES, EN LO QUE ES SDN. PERO BUENO, NO PASA NADA POR REPETIR QUE ESAS CARACTERISTICAS QUE TIENE SDN VAN BIEN PARA LA ING. TRÁFICO.}
-\note[item{En comparación con las redes tradicionales, SDN tiene muchas ventajas para ser
-compatible con TE debido a sus características distintivas, como el aislamiento de
-los planos de control y datos, el control centralizado global y la programabilidad del
-comportamiento de la red.}
+\note[item]{\textcolor{red}{ESTAS NOTAS YA SE HABRÁN CONTANDO EN DIAPOS ANTERIORES, EN LO QUE ES SDN. PERO BUENO, NO PASA NADA POR REPETIR QUE ESAS CARACTERISTICAS QUE TIENE SDN VAN BIEN PARA LA ING. TRÁFICO.}}
+
+\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
+\note[item]{En comparación con las redes tradicionales, SDN tiene muchas ventajas para ser compatible con TE debido a sus características distintivas, como el aislamiento de
+los planos de control y datos, el control centralizado global y la programabilidad del comportamiento de la red.}
 \end{frame}
-
-
 
 \begin{frame}{Calidad de servicio - QoS}
 \vspace*{-2em}
-\begin{alertblock}
-{\LARGE\textbf{AAAAAAAAAA}}
+\begin{alertblock}{\LARGE\textbf{QoS}}
 \vspace{1.2em}
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Conjunto de estándares y mecanismos que garantizan un rendimiento de alta calidad para aplicaciones críticas.
+\vspace{0.6em}
+
+Los administradores de red pueden usar los recursos existentes de manera eficiente y garantizar el nivel de servicio requerido.
+\begin{itemize}
+\item[\rightarrow]Sin expandir de forma reactiva ni aprovisionar en exceso o sobredimensionar sus redes.
+\end{itemize}
 \end{alertblock}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item El concepto de calidad de QoS es aquel en el que los requisitos de algunas aplicaciones y usuarios son más críticos que otros, lo que significa que parte del tráfico necesita un tratamiento preferencial.
+			\vspace{2em}	
+			\item OBJETIVO: proporcionar un servicio de entrega preferencial para las aplicaciones que lo necesitan asegurando un ancho de banda suficiente, controlando la latencia y reduciendo la pérdida de datos.
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+
+\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
+\end{frame}
+
+%%%%%%%%%%%%% ESCENARIOS EXISTENTES.
+
+\begin{frame}{Escenarios existentes}
+\vspace*{-2em}
+\begin{alertblock}{\LARGE}
+\begin{itemize}
+	\item Los balanceadores de carga usan hardware dedicado.
+	\begin{itemize}
+    	\item Costoso e inflexible.
+		\item Contienen pocos algoritmos.
+        \item No son programables (\texttt{\textit{Vendor-Locked}}).
+	\end{itemize}
+    \vspace{1em}
+  	\item QoS se implementa en los routers.
+    \begin{itemize}
+    \item  Es necesario configurar cada router para activar QoS.
+    \end{itemize}
+\end{itemize}
+\end{alertblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Hoy en día Redes -> mucho tráfico (miles clientes y cumplir requisitos)
+            \item 1 servidor no soporta esa carga -> Varios servidores con Balanceador.
+            \item Clientes envían al balanceador. Este reenvía a los servidores según su estrategia.
+			\vspace{2em}	
+			\item Los administradores de red no pueden usar su propios algoritmos de balanceo.
+			\vspace{2em}
+			\item fácil si es un area local. Red extensa es una MOVIDA.
+			\vspace{2em}            
+			\vfill
+		\end{enumerate}
+\end{center}}
 \end{frame}
 
 
-
-\begin{frame}{AAAAAAAAAAAAAAAAAAAAAAAAA}
-\vspace*{-2em}
-\begin{alertblock}
-{\LARGE\textbf{AAAAAAAAAA}}
-\vspace{1.2em}
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+%%%%%%%%%%%%% MEJORA DE LOS ESCENARIOS EXISTENTES CON SDN.
+\begin{frame}{Mejora de los escenarios Existentes con SDN}
+%\vspace*{-2em} %se me sale por lo del alert block y se ve fondo blanco en el titulo de la diapo
+\begin{alertblock}{\LARGE}
+\begin{itemize}
+	\item Los balanceadores de carga basados en SDN presentan ventajas:
+	\begin{itemize}
+    	\item  No se necesita hardware dedicado (menos costoso).
+    	\item  Mejoran el rendimiento del balanceador
+		\item  Reducen la complejidad de su implementación.
+        \item Son programables y permiten diseñar e implementar estrategias propias.
+	\end{itemize}
+    \vspace{1em}
+  	\item Con SDN se puede tener el control de QoS centralizado:
+    \begin{itemize}
+    	\item  Fácil de implementar en redes de mayor tamaño.
+    	\item  Con el controlador SDN se implementa QoS directamente en los switches.
+    	\item  Los routers no necesitan esa capacidad de cómputo ''menos inteligencia".
+    \end{itemize}
+\end{itemize}
 \end{alertblock}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Soluciona el problema de la red a mayor escala.
+			\item los routers que se encarguen de sus cometidos.
+			\vspace{2em}	
+			\item Se facilita la gestión de una forma eficaz de QoS en toda la red.
+			\vspace{2em}
+            \item ¡¡¡¡¡Se puede cambiar en caulquier momento las normas QoS dinámicamente!!!!!! 
+            \vspace{2em}
+            \vfill
+		\end{enumerate}
+\end{center}}
 \end{frame}
 
 
 \section{Routing multicamino con balanceador de carga}
+\begin{frame}{AAAAAAA}
+\vspace*{-2em}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item s
+			\vspace{2em}	
+			\item s
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+\begin{frame}{AAAAAAAA}
+\vspace*{-2em}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item s
+			\vspace{2em}	
+			\item s
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+\begin{frame}{AAAaAAAA}
+\vspace*{-2em}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item s
+			\vspace{2em}	
+			\item s
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
 \section{Implementación}
 \section{Conclusiones y líneas futuras}
 
