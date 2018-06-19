@@ -1,4 +1,4 @@
-\documentclass[10pt,spanish]{beamer}
+\documentclass[10pt,spanish,xcolor={svgnames}]{beamer}
 %%documentclass[notes,spanish,10pt]{beamer}       % print frame + notes
 
 % TILDES Y DEMÁS EN ESPAÑOL
@@ -11,8 +11,6 @@
 \usepackage{appendixnumberbeamer}
 %%	NUMEROS COMO FRACCIONS 4/20 Y BARRA DE PROGRESO EN CADA DIAPOSITIVA (TOO MUCH?)
 %\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book} %TEXTO QUE SE LEE MEJOR PARA UNA SALA GRANDE Y PROYECTOR CON POCA POTENCIA
-
-%\usepackage{xcolor} % PARA COLOREAR LAS NOTAS (COMO SI FUERAN TODOs)
 
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
@@ -52,10 +50,100 @@
 %TODOs notas:
 %\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes} %% PARA QUE NO APAREZCAN [disable]
 
-\usepackage{xcolor} % CAMBIAR TEXTO DE COLOR (PARA LAS NOTAS)
+
+%\usepackage{xcolor} % CAMBIAR TEXTO DE COLOR (PARA LAS NOTAS)
 \usepackage{wrapfig} % FIGURAS  A UN LADO, CON TEXTO AL OTRO.
 
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{framed}
+\usepackage{ifxetex,ifluatex}
+\usepackage{etoolbox} 
+% conditional for xetex or luatex
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+%
+\ifxetexorluatex%
+  \usepackage{fontspec}
+  \setmainfont{Fira Sans Ultralight} % or use \setmainfont to choose any font on your system
+  \newfontfamily\quotefont[Ligatures=TeX]{Fira Sans Ultralight} % selects Libertine as the quote font
+\fi
+
+\newcommand*\quotesize{60} % if quote size changes, need a way to make shifts relative
+% Make commands for the quotes
+\newcommand*{\openquote}
+   {\tikz[remember picture,overlay,xshift=-4ex,yshift=-2.5ex]
+   \node (OQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``};\kern0pt}
+
+\newcommand*{\closequote}[1]
+  {\tikz[remember picture,overlay,xshift=4ex,yshift={#1}]
+   \node (CQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont''};}
+
+% select a colour for the shading
+\colorlet{shadecolor}{Azure}
+
+\newcommand*\shadedauthorformat{\emph} % define format for the author argument
+
+% Now a command to allow left, right and centre alignment of the author
+\newcommand*\authoralign[1]{%
+  \if#1l
+    \def\authorfill{}\def\quotefill{\hfill}
+  \else
+    \if#1r
+      \def\authorfill{\hfill}\def\quotefill{}
+    \else
+      \if#1c
+        \gdef\authorfill{\hfill}\def\quotefill{\hfill}
+      \else\typeout{Invalid option}
+      \fi
+    \fi
+  \fi}
+% wrap everything in its own environment which takes one argument (author) and one optional argument
+% specifying the alignment [l, r or c]
+%
+\newenvironment{shadequote}[2][l]%
+{\authoralign{#1}
+\ifblank{#2}
+   {\def\shadequoteauthor{}\def\yshift{-2ex}\def\quotefill{\hfill}}
+   {\def\shadequoteauthor{\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
+\begin{snugshade}\begin{quote}\openquote}
+{\shadequoteauthor\quotefill\closequote{\yshift}\end{quote}\end{snugshade}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,11 +202,9 @@
 %% ---- COMIENZA EL DOCUMENTO ----
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-	\maketitle
-	\begin{frame}{Índice}
-		\setbeamertemplate{section in toc}[sections numbered]
-		\tableofcontents[hideallsubsections]
-		\note[item]{\textcolor{red}{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}}
+\begin{frame}
+  \titlepage
+\note[item]{\textcolor{red}{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}}
 		\note[item]{\textcolor{red}{COMPROBARLO CON LAS PANTALLAS DE LA PRESENTACIÓN (MI ORDE NO TIENE VGA, PREGUNTAR SI HAY HDMI Y LLEVAR EL MIO POR SI ACASO)}}
 		\note[item]{\textcolor{red}{EN LA TERMINAL, \$: pdfpc main.pdf - -notes=right}}
 		\note[item]{\textcolor{red}{https://bugs.kde.org/show\_bug.cgi?id=152585}}
@@ -126,7 +212,20 @@
 			\note[item]{\textcolor{red}{CUIDADO, SE ME PONE EL TEXTO DE COLOR BLANCO Y NO SE VE, ES CULPA DE USAR NOTAS (PFGPAGES) Y XELATEX}}
             \note[item]{\textcolor{red}{SI USO TODOs SE JOROBA LA FUENTE Y DA ERRORES. POR ESO HE PUESTO EL TEXTO QUE NO ES DE NOTAS SINO DE COSAS PARA CAMBIAR DE LAS DIAPOSITIVAS EN ROJO}}
             \note[item]{\textcolor{red}{ECHAR UN OJO A LA PORTADA, POR SI NO PRESENTARÁ EN JUNIO (Pone Junio, 2018)}}
-            \note[item]{Explicar que estos son los capítulos del trabajo, el índice hace de ''Estructura del proyecto''.}
+\end{frame}
+
+%SI NO ME GUSTA COMO PONGO LA PORTADA (begin frame... titlepage...) la puedo poner como la tenía antes, \maketitle sólo, sin begin frame ni nada. Está puesto con Begin frame porque así puedo añadir notas en esa diapo.
+%\maketitle
+\begin{frame}{Índice}
+	\setbeamertemplate{section in toc}[sections numbered]
+	\tableofcontents[hideallsubsections]
+    \note{\LARGE \vfill
+		\begin{center}
+			\begin{enumerate}
+				\item Son los capítulos del trabajo, el índice hace de ''Estructura de proyecto''.
+				\vfill
+			\end{enumerate}
+		\end{center}}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
@@ -167,8 +266,23 @@ Es una realidad que muchas de las empresas y proveedores de servicios de todo el
 \textit{Rohit Mehra} y \textit{Brad Casemore} en su previsión sobre SDN publicada en 2016:
 \vspace{1.3em}
 
-\textit{\say{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models}}
+%\textit{\say{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models.}}
 
+\begin{shadequote}{}
+\large\textit{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models.}
+\end{shadequote}
+
+%\begin{shadequote}[r]{Douglas Adams}
+%A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
+%\end{shadequote}
+
+%\begin{shadequote}[c]{Douglas Adams}
+%A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
+%\end{shadequote}
+
+%\begin{shadequote}{}
+%A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
+%\end{shadequote}
 
 \note[item]{\textcolor{red}{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}}
 \end{frame}
@@ -515,9 +629,7 @@ El tráfico se clasifica en flows en función de sus características.
 
 
 
-\begin{frame}{Ryu, VirtualBox, Mininet, iPerf}
-\large Elementos que han formado parte del
-trabajo: tecnologías, programas, protocolos y demás.
+\begin{frame}{Elementos}
 \begin{alertblock}{\LARGE}
 \begin{itemize}
 \large
@@ -530,44 +642,67 @@ trabajo: tecnologías, programas, protocolos y demás.
     \item \textbf{iPerf}
 \end{itemize}
 \end{alertblock}
+\note[item]{Contar para que se he usado cada uno.}
 \note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
 \end{frame}
-
-\begin{frame}{AAAAAAAAAAAAAAAAAAAAAAAAA}
-\vspace*{-2em}
-\begin{alertblock}{\LARGE\textbf{AAAAAAAAAA}}
-\vspace{1.2em}
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-\end{alertblock}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
-\end{frame}
-
-
-
-\begin{frame}{AAAAAAAAAAAAAAAAAAAAAAAAA}
-\vspace*{-2em}
-\begin{alertblock}
-{\LARGE\textbf{AAAAAAAAAA}}
-\vspace{1.2em}
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-\end{alertblock}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
-\end{frame}
-
-
-
-\begin{frame}{AAAAAAAAAAAAAAAAAAAAAAAAA}
-\vspace*{-2em}
-\begin{alertblock}
-{\LARGE\textbf{AAAAAAAAAA}}
-\vspace{1.2em}
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-\end{alertblock}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
-\end{frame}
-
-
+\begin{frame}
 \section{Definición del escenario de aplicación}
+
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Se definen los escenarios de aplicación que existen y cómo se pueden mejorar utilizando SDN. 	
+			\vspace{2em}	
+			\item 2 casos de uso.	
+			\vspace{2em}
+			\item Se explica Ingeniería de tráfico y QoS.	
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+\begin{frame}{Ingeniería de Tráfico}
+\vspace*{-2em}
+\begin{alertblock}{\LARGE\textbf{Ingeniería de Tráfico}}
+\vspace{1.2em}
+\large Es una aplicación de red importante que estudia
+la medición y gestión del tráfico.
+
+Diseña mecanismos de enrutamiento para guiar el tráfico de red a fin de mejorar la utilización de los recursos y cumplir mejor los requisitos de QoS.
+\end{alertblock}
+\note[item]{\textcolor{red}{ESTAS NOTAS YA SE HABRÁN CONTANDO EN DIAPOS ANTERIORES, EN LO QUE ES SDN. PERO BUENO, NO PASA NADA POR REPETIR QUE ESAS CARACTERISTICAS QUE TIENE SDN VAN BIEN PARA LA ING. TRÁFICO.}
+\note[item{En comparación con las redes tradicionales, SDN tiene muchas ventajas para ser
+compatible con TE debido a sus características distintivas, como el aislamiento de
+los planos de control y datos, el control centralizado global y la programabilidad del
+comportamiento de la red.}
+\end{frame}
+
+
+
+\begin{frame}{Calidad de servicio - QoS}
+\vspace*{-2em}
+\begin{alertblock}
+{\LARGE\textbf{AAAAAAAAAA}}
+\vspace{1.2em}
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+\end{alertblock}
+\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\end{frame}
+
+
+
+\begin{frame}{AAAAAAAAAAAAAAAAAAAAAAAAA}
+\vspace*{-2em}
+\begin{alertblock}
+{\LARGE\textbf{AAAAAAAAAA}}
+\vspace{1.2em}
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+\end{alertblock}
+\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\end{frame}
+
+
 \section{Routing multicamino con balanceador de carga}
 \section{Implementación}
 \section{Conclusiones y líneas futuras}
