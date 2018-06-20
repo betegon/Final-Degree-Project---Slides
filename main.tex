@@ -768,7 +768,7 @@ Los administradores de red pueden usar los recursos existentes de manera eficien
 			\vspace{2em}	
 			\item Se facilita la gestión de una forma eficaz de QoS en toda la red.
 			\vspace{2em}
-            \item ¡¡¡¡¡Se puede cambiar en caulquier momento las normas QoS dinámicamente!!!!!! 
+            \item ¡¡¡¡¡Se puede cambiar en cualquier momento las normas QoS dinámicamente!!!!!! 
             \vspace{2em}
             \vfill
 		\end{enumerate}
@@ -777,47 +777,659 @@ Los administradores de red pueden usar los recursos existentes de manera eficien
 
 
 \section{Routing multicamino con balanceador de carga}
-\begin{frame}{AAAAAAA}
+
+%%%%%%%%%%%%%%%% Balanceador de carga con routing multicamino	
+\begin{frame}{Balanceador de carga con routing multicamino}
+\vspace*{-2em}
+El balanceador de carga con routing multicamino es uno de los casos de uso más comunes e implementados de SDN. 
+\vspace{0.6em}
+
+En nuestro caso, se desarrolla en un script en \textit{Python} que hemos llamado \texttt{multicamino.py}. %poner -> multicamino.py ??? o son demasiadas flechas en toda la presentación?
 \vspace*{-2em}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item s
+			\item No se profundiza del todo -> es uno de los más usados y documentados.
 			\vspace{2em}	
-			\item s
+            \item  	
+			\vspace{2em}	
+			\item Luego se verá como ejecutarlo y comprobar que funciona. ahora analizaremos la parte teórica.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
 
-\begin{frame}{AAAAAAAA}
+
+
+%%%%%%%%%%% Routing Multicamino
+\begin{frame}{Routing multicamino}
 \vspace*{-2em}
+Técnica que explota los recursos de la red mediante la propagación del tráfico desde un nodo de origen a un nodo de destino por medio de múltiples rutas a lo largo de la red.
+\begin{alertblock}{}
+\begin{itemize}
+\item Balanceo de carga
+\item Agregación de ancho de banda.
+\item Minimización de retardo de extremo a extremo.
+\item Aumento de la tolerancia a fallos (mejorar fiabilidad).
+\end{itemize}
+\end{alertblock}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item s
+			\item Existen 3 partes: descubrimiento, distribución de trafico y mantenimiento de rutas
 			\vspace{2em}	
-			\item s
+			\item Nos centramos en el decubrimiento.La distribución del tráfico se hará de acuerdo a lo que queremos implementar, un balanceador de carga, así que repartiremos el tráfico por igual
+a través de las rutas encontradas y consideraremos que los caminos existentes se
+mantienen fijos durante la realización de este trabajo.
+			\vspace{2em}
+			\item \textcolor{red}{VER SI AÑADO UNA DIAPO MAS CON LO DE LAS 3 PARTES IMPORTANTE,SOLO SI NECESITO MAS DIAPOS (LO DUDO).}
+            \vspace{2em}
+            \vfill
+            
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% PathFinding Algorithms
+\begin{frame}{PathFinding Algorithms}
+\vspace*{-2em}
+%Los algoritmos de \alert{\textbf{Pathing}} son los encargados de obtener la ruta más corta entre dos puntos. 
+%\vspace*{-1em}
+\begin{alertblock}{\small}
+Los algoritmos de \alert{\textbf{Pathing}} son los encargados de obtener la ruta más corta entre dos puntos.
+\begin{itemize}
+\item DFS y BFS son dos algoritmos conocidos, que en la búsqueda agotan todas las posibilidades.
+%\begin{itemize}
+\item Iteran sobre todos los caminos posibles hasta alcanzar el nodo de destino
+\item Se ejecutan en tiempo lineal, según la notación Big-$\mathcal{O}$ sería: $\mathcal{O}(N+E)$
+%\end{itemize}
+\end{itemize}
+\end{alertblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+        	\item se basan en Dijkstra->camino más corto en grafo con pesos.
+			\vspace{2em}
+            \item  A diferencia de Dijkstra, que no agota todas las posibilidades.
+			\item BFS-Búsqueda en Anchura, DFS-Búsqueda profundidad.
+            \vspace{2em}	
+			\item N=Nºnodos, E=Nºenlaces entre los nodos de la red. 
+			\vspace{2em}
+       
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Depth-first Search Algorithm (DFS)
+\begin{frame}{Depth-first Search Algorithm (DFS)}
+\vspace*{-2em}
+\begin{alertblock}{\LARGE DFS}
+\begin{itemize}
+\item Búsqueda en profundidad del grafo.
+\item Explora todos los nodos en un grafo hasta encontrar el nodo más profundo y después retrocede  con el propósito de encontrar otros posibles nodos.
+\item Hace uso de una pila (\textit{stack}).
+\end{itemize}
+\end{alertblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item ELEGIDO PARA ESTE TRABAJO.
+			\vspace{2em}	
+			\item Útil por el uso de la pila, modificamos para encontrar las rutas posibles entre dos nodos.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
 
-\begin{frame}{AAAaAAAA}
-\vspace*{-2em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Iteraciones DFS
+\begin{frame}{Iteraciones DFS}
+\vspace*{-2.2em}
+%% FIGURA DFS ----- REALIZADA EN https://www.mathcha.io/editor  
+\begin{figure}[h!]
+	\centering
+	% \hspace*{-0.46in}% PARA AJUSTAR IZQ-DCH LA FIGURA.
+	\resizebox{\textwidth}{!}{  % ESCALAR LA FIGURA, CON ESTE COMANDO SE QUE NO SE ME VA A SALIR FUERA DE TEXTWIDTH
+		\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+		\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,693.1666717529297); %set diagram left start at 0, and has height of 693.1666717529297
+		
+		\draw    (50, 39.36) rectangle (50, 39.36)   ;
+		\draw    (384, 41.87) rectangle (384, 41.87)   ;
+		\draw    (239, 11.12) rectangle (239, 11.12)   ;
+		\draw    (54, 156.67) rectangle (54, 156.67)   ;
+		\draw    (541, -39.33) rectangle (541, -39.33)   ;
+		\draw    (384, 156.67) rectangle (384, 156.67)   ;
+		\draw    (227, 127.19) rectangle (227, 127.19)   ;
+		\draw    (54, 275.24) rectangle (54, 275.24)   ;
+		\draw    (384, 275.24) rectangle (384, 275.24)   ;
+		\draw    (227, 245.76) rectangle (227, 245.76)   ;
+		
+		\draw  [fill={rgb, 255:red, 244; green, 12; blue, 141 }  ,fill opacity=0.65 ]  (42, 45.22) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (42,45.21) node  [align=left] {\textbf{A}};
+		\draw    (86, 12.58) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (86,12.59) node  [align=left] {B};
+		\draw    (217, 16.35) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (217,16.35) node  [align=left] {E};
+		\draw    (157, 54) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (157,53.99) node  [align=left] {D};
+		\draw    (86, 81.6) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (86,81.6) node  [align=left] {C};
+		\draw    (248, 45.22) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (248,45.21) node  [align=left] {G};
+		\draw    (187, 97.92) circle [x radius= 10.31, y radius= 10.31]   ;
+		\draw (187,97.91) node  [align=left] {F};
+		\draw  [fill={rgb, 255:red, 244; green, 12; blue, 141 }  ,fill opacity=0.65 ]  (374, 45.22) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (374,45.21) node  [align=left] {A};
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]  (424, 13.85) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (424,13.84) node  [align=left] {\textbf{B}};
+		\draw    (551, 18.87) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (551,18.86) node  [align=left] {E};
+		\draw    (491, 56.5) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (491,56.5) node  [align=left] {D};
+		\draw    (424, 82.85) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (424,82.85) node  [align=left] {C};
+		\draw    (582, 47.72) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (582,47.72) node  [align=left] {G};
+		\draw    (521, 100.42) circle [x radius= 10.31, y radius= 10.31]   ;
+		\draw (521,100.42) node  [align=left] {F};
+		\draw (20,68.9) node  [align=left] {\textbf{Origen}};
+		\draw (273,67.76) node  [align=left] {\textbf{Destino}};
+		\draw  [fill={rgb, 255:red, 244; green, 12; blue, 141 }  ,fill opacity=0.65 ]  (40, 158.13) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (40,158.14) node  [align=left] {A};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (91, 129.9) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (91,129.91) node  [align=left] {B};
+		\draw    (221, 133.67) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (221,133.67) node  [align=left] {E};
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]  (161, 171.32) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (161,171.31) node  [align=left] {\textbf{D}};
+		\draw    (94, 197.67) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (94,197.66) node  [align=left] {C};
+		\draw    (252, 162.53) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (252,162.53) node  [align=left] {G};
+		\draw    (191, 217.73) circle [x radius= 10.31, y radius= 10.31]   ;
+		\draw (191,217.74) node  [align=left] {F};
+		\draw  [fill={rgb, 255:red, 244; green, 12; blue, 141 }  ,fill opacity=0.65 ]  (374, 160.02) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (374,160.02) node  [align=left] {A};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (421, 129.9) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (421,129.91) node  [align=left] {B};
+		\draw    (551, 133.67) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (551,133.67) node  [align=left] {E};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (491, 171.32) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (491,171.31) node  [align=left] {D};
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]  (424, 197.67) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (424,197.66) node  [align=left] {\textbf{C}};
+		\draw    (582, 162.53) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (582,162.53) node  [align=left] {G};
+		\draw    (521, 217.73) circle [x radius= 10.31, y radius= 10.31]   ;
+		\draw (521,217.74) node  [align=left] {F};
+		\draw  [fill={rgb, 255:red, 244; green, 12; blue, 141 }  ,fill opacity=0.65 ]  (40, 276.7) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (40,276.71) node  [align=left] {A};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (91, 248.48) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (91,248.48) node  [align=left] {B};
+		\draw    (221, 252.23) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (221,252.24) node  [align=left] {E};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (161, 289.88) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (161,289.88) node  [align=left] {D};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (94, 316.23) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (94,316.23) node  [align=left] {C};
+		\draw    (252, 281.1) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (252,281.1) node  [align=left] {G};
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]  (191, 336.3) circle [x radius= 10.31, y radius= 10.31]   ;
+		\draw (191,336.31) node  [align=left] {\textbf{F}};
+		\draw  [fill={rgb, 255:red, 244; green, 12; blue, 141 }  ,fill opacity=0.65 ]  (374, 278.58) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (374,278.59) node  [align=left] {A};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (421, 248.48) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (421,248.48) node  [align=left] {B};
+		\draw    (551, 252.23) circle [x radius= 10.63, y radius= 10.63]   ;
+		\draw (551,252.24) node  [align=left] {E};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (491, 289.88) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (491,289.88) node  [align=left] {D};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (424, 316.23) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (424,316.23) node  [align=left] {C};
+		\draw  [fill={rgb, 255:red, 126; green, 211; blue, 33 }  ,fill opacity=0.7 ]  (582, 281.1) circle [x radius= 10.97, y radius= 10.97]   ;
+		\draw (582,281.1) node  [align=left] {\textbf{G}};
+		\draw  [fill={rgb, 255:red, 25; green, 175; blue, 195 }  ,fill opacity=1 ]  (521, 336.3) circle [x radius= 10.31, y radius= 10.31]   ;
+		\draw (521,336.31) node  [align=left] {F};
+		\draw (610,303.27) node  [align=left] {\textbf{Destino}};
+		\draw (350,303.27) node  [align=left] {\textbf{Origen}};
+		\draw  [fill={rgb, 255:red, 244; green, 12; blue, 141 }  ,fill opacity=0.65 ]   (126.33, 370.97) rectangle (153.67, 390.7)   ;
+		\draw (140,380.83) node  [align=left] { \ A };
+		\draw  [fill={rgb, 255:red, 126; green, 211; blue, 33 }  ,fill opacity=0.7 ]   (465.67, 370.97) rectangle (494.33, 390.7)   ;
+		\draw (480,380.83) node  [align=left] { \ G };
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]   (395, 370.97) rectangle (425, 390.7)   ;
+		\draw (410,380.83) node  [align=left] { \ \ F };
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]   (191.33, 370.97) rectangle (218.67, 390.7)   ;
+		\draw (205,380.83) node  [align=left] { \ B };
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]   (257, 370.97) rectangle (285, 390.7)   ;
+		\draw (271,380.83) node  [align=left] { \ D };
+		\draw  [fill={rgb, 255:red, 45; green, 220; blue, 243 }  ,fill opacity=0.39 ]   (327, 370.97) rectangle (355, 390.7)   ;
+		\draw (341,380.83) node  [align=left] { \ C };
+		\draw    (50.45,52.2) -- (77.55,74.61) ;
+		
+		
+		\draw    (50.81,38.68) -- (77.46,18.92) ;
+		
+		
+		\draw    (95.18,17.94) -- (147.53,48.47) ;
+		
+		
+		\draw    (96.63,12.89) -- (206.37,16.05) ;
+		
+		
+		\draw    (146.78,57.97) -- (96.22,77.63) ;
+		
+		
+		\draw    (166.29,48.17) -- (208,22) ;
+		
+		
+		\draw    (224.78,23.59) -- (239.98,37.74) ;
+		
+		
+		\draw    (239.7,52.38) -- (194.8,91.17) ;
+		
+		
+		\draw    (176.83,96.27) -- (96.83,83.35) ;
+		
+		
+		\draw    (382.5,51.61) -- (415.24,76.26) ;
+		
+		
+		\draw    (383,39.56) -- (414.71,19.67) ;
+		
+		
+		\draw    (433.25,19.74) -- (481.75,50.61) ;
+		
+		
+		\draw    (434.96,14.28) -- (540.38,18.44) ;
+		
+		
+		\draw    (480.8,60.52) -- (434.21,78.84) ;
+		
+		
+		\draw    (500.29,50.68) -- (541.99,24.51) ;
+		
+		
+		\draw    (558.78,26.11) -- (573.97,40.25) ;
+		
+		
+		\draw    (573.7,54.89) -- (528.8,93.68) ;
+		
+		
+		\draw    (510.86,98.58) -- (434.79,84.81) ;
+		
+		
+		\draw    (48.58,164.41) -- (85.15,191.19) ;
+		
+		
+		\draw    (49.3,152.99) -- (81.7,135.05) ;
+		
+		
+		\draw    (100.15,135.32) -- (151.56,165.73) ;
+		
+		
+		\draw    (101.63,130.21) -- (210.37,133.36) ;
+		
+		
+		\draw    (150.79,175.32) -- (104.2,193.65) ;
+		
+		
+		\draw    (170.29,165.48) -- (212,139.32) ;
+		
+		
+		\draw    (228.78,140.91) -- (243.98,155.06) ;
+		
+		
+		\draw    (243.87,169.89) -- (198.64,210.82) ;
+		
+		
+		\draw    (180.91,215.65) -- (104.74,199.88) ;
+		
+		
+		\draw    (382.49,166.41) -- (415.24,191.07) ;
+		
+		
+		\draw    (382.95,154.28) -- (412.05,135.64) ;
+		
+		
+		\draw    (430.15,135.32) -- (481.56,165.73) ;
+		
+		
+		\draw    (431.63,130.21) -- (540.37,133.36) ;
+		
+		
+		\draw    (480.79,175.32) -- (434.2,193.65) ;
+		
+		
+		\draw    (500.29,165.48) -- (542,139.32) ;
+		
+		
+		\draw    (558.78,140.91) -- (573.98,155.06) ;
+		
+		
+		\draw    (573.87,169.89) -- (528.64,210.82) ;
+		
+		
+		\draw    (510.91,215.65) -- (434.74,199.88) ;
+		
+		
+		\draw    (48.57,282.98) -- (85.15,309.76) ;
+		
+		
+		\draw    (49.3,271.56) -- (81.7,253.63) ;
+		
+		
+		\draw    (100.15,253.89) -- (151.56,284.3) ;
+		
+		
+		\draw    (101.63,248.78) -- (210.37,251.93) ;
+		
+		
+		\draw    (150.79,293.9) -- (104.2,312.22) ;
+		
+		
+		\draw    (170.29,284.05) -- (212,257.89) ;
+		
+		
+		\draw    (228.78,259.48) -- (243.97,273.63) ;
+		
+		
+		\draw    (243.87,288.46) -- (198.65,329.39) ;
+		
+		
+		\draw    (180.9,334.22) -- (104.74,318.45) ;
+		
+		
+		\draw    (382.49,284.98) -- (415.24,309.64) ;
+		
+		
+		\draw    (382.95,272.85) -- (412.05,254.21) ;
+		
+		
+		\draw    (430.15,253.89) -- (481.56,284.3) ;
+		
+		
+		\draw    (431.63,248.78) -- (540.37,251.93) ;
+		
+		
+		\draw    (480.79,293.9) -- (434.2,312.22) ;
+		
+		
+		\draw    (500.29,284.05) -- (542,257.89) ;
+		
+		
+		\draw    (558.78,259.48) -- (573.97,273.63) ;
+		
+		
+		\draw    (573.87,288.46) -- (528.65,329.39) ;
+		
+		
+		\draw    (510.9,334.22) -- (434.74,318.45) ;
+		
+		
+		\draw    (425,380.83) -- (465.67,380.83) ;
+		\draw [shift={(465.67,380.83)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		\draw    (153.67,380.83) -- (191.33,380.83) ;
+		\draw [shift={(191.33,380.83)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		\draw    (218.67,380.83) -- (257,380.83) ;
+		\draw [shift={(257,380.83)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		\draw    (285,380.83) -- (327,380.83) ;
+		\draw [shift={(327,380.83)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		\draw    (355,380.83) -- (395,380.83) ;
+		\draw [shift={(395,380.83)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ]   (0,0) .. controls (3.31,-0.3) and (6.95,-1.4) .. (10.93,-3.29)(0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		\end{tikzpicture}
+	}	
+	\caption{Iteraciones del algoritmo DFS.}
+	\label{fig: DFS}
+\end{figure}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item s
+			\item Para grafos dirigidos el proceso es análogo, sólo cambia el significado de ''adyacencia"
 			\vspace{2em}	
-			\item s
+			\item Se van visitando los nodos y se marcan como visitados.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Cálculo del coste por camino
+\begin{frame}{Cálculo del coste por camino}
+\vspace*{-2em}
+\begin{exampleblock}{\large DFS devuelve una lista con las rutas, pero sin pesos.}
+\vspace*{1em}
+Tenemos que medir el coste de los caminos o rutas:
+\begin{enumerate}
+\item Calcular todos los costes de enlaces que haya en la ruta. $Cost(l) = \frac{BW_{Reference}}{BW(l)} \quad\mathrm{;}\quad BW(l) = \min\hspace{0.4em}(\hspace{0.2em}BW_{Switch1}, BW_{Switch2}\hspace{0.2em})$
+\vspace{1em}
+\item Calcular el coste total de la ruta (sumar los costes de enlaces).
+\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Calculamos el coste como en OSPF (protocolo de red) 
+			\vspace{2em}	
+			\item  BW enlace = BW de la interfaz de un switch.
+			\vspace{2em}
+			\item  COSTE DE ENLACE = 1 -> COSTE DE LA RUTA ES EL Nº DE ENLACES (FÁCIL PARA ENTENDERLO).
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Bucket weight en OpenFlow
+\begin{frame}{Bucket weight en OpenFlow}
+\vspace*{-0.1em}
+\begin{exampleblock}{\large \emph{Group}\rightarrow \emph{Group table}\rightarrow \emph{buckets (bucket weight)}\rightarrow \emph{acciones}}
+\vspace*{1em}
+Los \emph{Grupos} en OpenFlow representan una serie de puertos como una entidad única para el envío de paquetes. Existen varios tipos de grupos, interesándonos los \emph{Select} para el multicamino. 
+\vspace*{0.6em}
+
+Cada grupo consta de una \emph{Group table} formada de entradas llamadas \emph(buckets) y cada uno de estos buckets contiene una serie de acciones que se aplican antes de enviar el paquete por el puerto de salida del bucket seleccionado, que sera el de mayor \emph{bucket weight}.
+\vspace*{1em}
+
+$bw(p) = \left( 1 - \frac{Cost(p)}{\sum_{i=0}^{i<n} Cost(i)}\right)\times{10}$
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+		    \item  Contrario al coste, dónde menor coste es mejor, aquí es al revés.
+			\vspace{2em}
+            \item Tenemos por tanto que solucionar el problema que nos surge, ajustar el criterio
+de los bucket weights con los costes de las ruta
+			\vspace{2em}
+            \item  Select solo se ejecuta un bucket.
+			\vspace{2em}
+			\item  p=path,ruta.  bw(p)=entre 0 y 10
+			\vspace{2em}
+            \item  si un switch tuviera dos puertos con enlace, pondríamos cada uno de esos puertos como un bucket en la group table.
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
 
 \section{Implementación}
 \section{Conclusiones y líneas futuras}
