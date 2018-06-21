@@ -1205,15 +1205,16 @@ Los algoritmos de \alert{\textbf{Pathing}} son los encargados de obtener la ruta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Cálculo del coste por camino
 \begin{frame}{Cálculo del coste por camino}
 \vspace*{-2em}
-\begin{exampleblock}{\large DFS devuelve una lista con las rutas, pero sin pesos.}
+\begin{alertblock}{\large DFS devuelve una lista con las rutas, pero sin pesos.}
 \vspace*{1em}
 Tenemos que medir el coste de los caminos o rutas:
 \begin{enumerate}
-\item Calcular todos los costes de enlaces que haya en la ruta. $Cost(l) = \frac{BW_{Reference}}{BW(l)} \quad\mathrm{;}\quad BW(l) = \min\hspace{0.4em}(\hspace{0.2em}BW_{Switch1}, BW_{Switch2}\hspace{0.2em})$
+\item Calcular todos los costes de enlaces que haya en la ruta.\\ \vspace*{0.5em}  {\large $Cost(l) = \frac{BW_{Reference}}{BW(l)}\quad\mathrm{;}\quad$} 
+\\ \vspace*{0.5em} {\large $BW(l) = \min\hspace{0.4em}(\hspace{0.2em}BW_{Switch1}, BW_{Switch2}\hspace{0.2em})$}
 \vspace{1em}
 \item Calcular el coste total de la ruta (sumar los costes de enlaces).
 \end{enumerate}
-\end{exampleblock}
+\end{alertblock}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
@@ -1233,16 +1234,16 @@ Tenemos que medir el coste de los caminos o rutas:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Bucket weight en OpenFlow
 \begin{frame}{Bucket weight en OpenFlow}
 \vspace*{-0.1em}
-\begin{exampleblock}{\large \emph{Group}\rightarrow \emph{Group table}\rightarrow \emph{buckets (bucket weight)}\rightarrow \emph{acciones}}
+\begin{alertblock}{\large \emph{Group}\rightarrow \emph{Group table}\rightarrow \emph{buckets (bucket weight)}\rightarrow \emph{acciones}}
 \vspace*{1em}
 Los \emph{Grupos} en OpenFlow representan una serie de puertos como una entidad única para el envío de paquetes. Existen varios tipos de grupos, interesándonos los \emph{Select} para el multicamino. 
 \vspace*{0.6em}
 
-Cada grupo consta de una \emph{Group table} formada de entradas llamadas \emph(buckets) y cada uno de estos buckets contiene una serie de acciones que se aplican antes de enviar el paquete por el puerto de salida del bucket seleccionado, que sera el de mayor \emph{bucket weight}.
+Cada grupo consta de una \emph{Group table} formada de entradas, \emph{buckets}, y cada \emph{bucket} contiene una serie de acciones que se aplican antes de enviar el paquete por el puerto de salida del \emph{bucket} seleccionado, que será el de mayor \emph{bucket weight}.
 \vspace*{1em}
 
-$bw(p) = \left( 1 - \frac{Cost(p)}{\sum_{i=0}^{i<n} Cost(i)}\right)\times{10}$
-\end{exampleblock}
+\large$bw(p) = \left( 1 - \frac{Cost(p)}{\sum_{i=0}^{i<n} Cost(i)}\right)\times{10}$
+\end{alertblock}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
@@ -1263,175 +1264,205 @@ de los bucket weights con los costes de las ruta
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
-
 
 \section{Implementación}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Requirements
+\begin{frame}{Requirements}
+\vspace*{-2em}
+\begin{exampleblock}{\LARGE Requirements}
+\begin{center}
+\begin{enumerate}
+\large
+\item Máquina corriendo \texttt{Ubuntu 16.04.3} o superior.
+\vspace*{0.5em}
+\item \texttt{Mininet v2.2.2} o superior.
+\vspace*{0.5em}
+\item \texttt{Ryu v4.0} o superior. 
+\vspace*{0.5em}
+\item \texttt{iPerf} e \texttt{iPerf3}\end{enumerate}
+\end{center}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  18.04 ha salido hace poco (compatible).
+			\vspace{2em}	
+			\item  Que tenga miniedit.
+			\vspace{2em}
+			\item  Actualizaciones en la API.
+			\vspace{2em}	
+            \item  uno para cada caso.
+            \vspace{2em}
+			\item \textcolor{red}{CUIDADO, ESTA DIAPO ES IGUAL QUE UNA DE LAS PRIMERAS (PENSAR SI QUITO LA PRIMERA Y DEJO ESTA O QUE...)}
+            \vspace{2em}
+            \vfill 
+            
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino I
+\begin{frame}{Balanceador de carga multicamino I}
+\vspace*{-2em}
+\begin{exampleblock}{Definición del escenario de aplicación}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{Imagenes/topologia_multicamino.png}
+	\caption{Topología elegida para el routing multicamino con balanceo de carga.}
+	\label{img: topologia_multicamino}
+\end{figure}
+\end{exampleblock}
+
+
+
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  \textcolor{red}{SOLUCIONAR PROBLEMA CON EL FONDO BLANCO DE LA CAPTURA DE MINIEDIT.}
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino II
+\begin{frame}{Balanceador de carga multicamino II} 
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino III
+\begin{frame}{Balanceador de carga multicamino III}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
+%\begin{itemize}[<+- | alert@+>]
+%\item 
+%\item Now this
+%\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino IV
+\begin{frame}{Balanceador de carga multicamino IV}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item
+\end{enumerate}
+\end{exampleblock}
+
+
+
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	 y
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{AAAAA}
+\vspace*{-2em}
+\begin{exampleblock}{AA}
+\begin{enumerate}
+\item
+\vspace{1em}
+\item\end{enumerate}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  
+			\vspace{2em}	
+			\item  
+			\vspace{2em}
+			\item  
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
 \section{Conclusiones y líneas futuras}
 
 
