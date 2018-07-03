@@ -169,9 +169,7 @@
 }
 %\date{\today}
 \date{Junio, 2018}
-\logo{
-	\includegraphics[width=1.1cm,keepaspectratio]{figuras/git.png}
-}
+
 \titlegraphic{
 	
 	\includegraphics[width=3.5em]{figuras/uc.png}\hfill
@@ -198,10 +196,10 @@
 \pgfplotsset{width=10cm,compat=1.9}
 \usepackage{pgfplotstable}
 
-
 %% ---- COMIENZA EL DOCUMENTO ----
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+
 \begin{frame}
   \titlepage
 \note[item]{\textcolor{red}{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}}
@@ -214,8 +212,16 @@
             \note[item]{\textcolor{red}{ECHAR UN OJO A LA PORTADA, POR SI NO PRESENTARÁ EN JUNIO (Pone Junio, 2018)}}
 \end{frame}
 
+
 %SI NO ME GUSTA COMO PONGO LA PORTADA (begin frame... titlepage...) la puedo poner como la tenía antes, \maketitle sólo, sin begin frame ni nada. Está puesto con Begin frame porque así puedo añadir notas en esa diapo.
 %\maketitle
+
+% DEFINO EL LOGO AQUÍ PARA QUE NO ME APAREZCA EN EN LA DIAPOSITIVA DE PORTADA (EN LA PORTADA LO PONGO A MANO PARA QUE ESTÉ ALINEADO CON EL RESTO DE LOGOS).
+\logo{
+\includegraphics[width=1.1cm,keepaspectratio]{figuras/git.png}
+}
+
+
 \begin{frame}{Índice}
 	\setbeamertemplate{section in toc}[sections numbered]
 	\tableofcontents[hideallsubsections]
@@ -366,7 +372,36 @@ nodes near coords align={horizontal},
 \note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
 \end{frame}
 
-\section{Ámbito de trabajo}
+\section{Conceptos teóricos}
+
+
+%ESTA DIAPO ESTA COMENTADA PORQUE EN REALIDAD SE DICE TODO EN ESTADO DEL ARTE
+% DIAPOSITIVA sobrel la definición de SDN
+% \begin{frame}[fragile]{SDN (Software Defined Network)}
+% \begin{alertblock}{\LARGE\textbf{SDN}}
+% \begin{itemize}
+% 	\vspace{1.2em}
+% 	\item  es un paradigma dentro de las redes de comunicaciones que permite eliminar muchas de las limitaciones de las infraestructuras de red actuales.
+
+% 	\item Su objetivo es separar el plano de datos del plano de control, centralizando el estado de la red y la capacidad de toma de decisiones. 
+% \end{itemize}
+% \end{alertblock}
+% \note{\large \vfill
+% 	\begin{center}
+% 		\begin{enumerate}
+% 			\item así la programación en el plano de control (controlador) simplifica la operación en el plano de datos.
+% 			\vspace{2em}	
+% 			\item las aplicaciones y servicios pueden tratar a la red como una entidad lógica o virtual.
+% 			\vspace{2em}
+% 			\vfill 
+% 		\end{enumerate}
+% 	\end{center}}
+% \end{frame}
+
+
+
+
+
 
 \begin{frame}{Estado del arte}
 \vspace{2em}
@@ -374,7 +409,7 @@ nodes near coords align={horizontal},
 \centering
 \hspace*{-0.30in}% PARA AJUSTAR IZQ-DCH LA FIGURA.
 \tikzset{every picture/.style={line width=0.5pt}} %set default line width to 0.75pt      
-\resizebox{0.9\textwidth}{!}{  % ESCALAR LA FIGURA, CON ESTE COMANDO SE QUE NO SE ME VA A SALIR FUERA DE TEXTWIDTH
+\resizebox{\textwidth}{!}{  % ESCALAR LA FIGURA, CON ESTE COMANDO SE QUE NO SE ME VA A SALIR FUERA DE TEXTWIDTH
 \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
 %uncomment if require: \path (0,379); %set diagram left start at 0, and has height of 379
 
@@ -510,6 +545,80 @@ nodes near coords align={horizontal},
 \end{frame}
 
 
+
+
+\begin{frame}{Configuración física}
+\vspace*{2em}
+\begin{figure}[h!]
+\centering
+\hspace*{-0.46in}% PARA AJUSTAR IZQ-DCH LA FIGURA.
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\resizebox{\textwidth}{!}{  % ESCALAR LA FIGURA, CON ESTE COMANDO SE QUE NO SE ME VA A SALIR FUERA DE TEXTWIDTH
+	
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,674.2327575683594); %set diagram left start at 0, and has height of 674.2327575683594
+
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][dash pattern={on 5.63pt off 4.5pt}][line width=1.5]   (446.83, 188.04) rectangle (557.56, 240.93)   ;
+\draw  [dash pattern={on 6.75pt off 4.5pt}][line width=2.25]   (275.12, 120.04) rectangle (573.12, 253.7)   ;
+\draw  [dash pattern={on 7.88pt off 4.5pt}][line width=3]   (230.12, 67.04) rectangle (613.12, 269.39)   ;
+\draw  [line width=4.5]   (193.18, 45.04) rectangle (647.98, 283.28)   ;
+\draw  [line width=2.25]  (267.07,284.91) -- (564.58,284.91) -- (437.07,337.68) -- (139.57,337.68) -- cycle ;
+\draw  [line width=2.25]  (236.66,341.9) -- (344.41,341.9) -- (298.23,361.6) -- (190.47,361.6) -- cycle ;
+\draw [line width=4.5]    (8.19,368.73) -- (195.32,283.28) ;
+
+
+\draw [line width=4.5]    (462.99,368.73) -- (650.12,283.28) ;
+
+
+\draw [line width=4.5]    (7.12,368.73) -- (464.06,368.73) ;
+
+
+\draw [line width=1.5]    (420.68,104.83) .. controls (422.35,106.49) and (422.36,108.16) .. (420.7,109.83) .. controls (419.04,111.5) and (419.05,113.17) .. (420.72,114.83) .. controls (422.39,116.5) and (422.39,118.16) .. (420.73,119.83) .. controls (419.07,121.5) and (419.08,123.17) .. (420.75,124.83) .. controls (422.42,126.49) and (422.43,128.16) .. (420.77,129.83) -- (420.78,132.82) -- (420.81,140.82) ;
+\draw [shift={(420.81,140.82)}, rotate = 269.79] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=1.5]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (8.93,-4.29)    ;
+
+\draw [line width=1.5]    (431.12,171.45) .. controls (433.39,170.79) and (434.85,171.59) .. (435.5,173.86) .. controls (436.15,176.13) and (437.6,176.93) .. (439.87,176.28) .. controls (442.14,175.63) and (443.6,176.43) .. (444.25,178.7) .. controls (444.9,180.97) and (446.36,181.77) .. (448.63,181.12) .. controls (450.89,180.47) and (452.35,181.27) .. (453,183.53) .. controls (453.65,185.8) and (455.11,186.6) .. (457.38,185.95) .. controls (459.65,185.3) and (461.11,186.1) .. (461.76,188.37) .. controls (462.41,190.64) and (463.86,191.44) .. (466.13,190.79) .. controls (468.4,190.13) and (469.86,190.93) .. (470.51,193.2) .. controls (471.16,195.47) and (472.62,196.27) .. (474.89,195.62) .. controls (477.16,194.97) and (478.62,195.77) .. (479.27,198.04) -- (483.12,200.17) -- (490.12,204.04) ;
+\draw [shift={(490.12,204.04)}, rotate = 208.91] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=1.5]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (8.93,-4.29)    ;
+
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][dash pattern={on 5.63pt off 4.5pt}][line width=1.5]   (295.83, 189.04) rectangle (406.56, 239.93)   ;
+\draw [line width=1.5]    (413.12,170.04) .. controls (412.57,172.33) and (411.15,173.2) .. (408.86,172.65) .. controls (406.57,172.1) and (405.15,172.98) .. (404.6,175.27) .. controls (404.05,177.56) and (402.63,178.44) .. (400.34,177.89) .. controls (398.05,177.34) and (396.63,178.21) .. (396.08,180.5) .. controls (395.53,182.79) and (394.11,183.67) .. (391.82,183.12) .. controls (389.53,182.57) and (388.11,183.44) .. (387.56,185.73) .. controls (387.01,188.02) and (385.59,188.9) .. (383.3,188.35) .. controls (381.01,187.8) and (379.58,188.68) .. (379.03,190.97) .. controls (378.48,193.26) and (377.06,194.13) .. (374.77,193.58) .. controls (372.48,193.03) and (371.06,193.91) .. (370.51,196.2) .. controls (369.96,198.49) and (368.54,199.37) .. (366.25,198.82) -- (362.94,200.85) -- (356.12,205.04) ;
+\draw [shift={(356.12,205.04)}, rotate = 328.45] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=1.5]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (8.93,-4.29)    ;
+
+\draw [line width=1.5]    (465.12,220.04) -- (378.12,220.04) ;
+\draw [shift={(378.12,220.04)}, rotate = 360] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=1.5]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (8.93,-4.29)    ;
+\draw [shift={(465.12,220.04)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=1.5]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (8.93,-4.29)    ;
+
+\draw (502.08,219.88) node [scale=1.2] [align=left] {{\large \textbf{Mininet}}};
+\draw (420.1,155.29) node [scale=1.2] [align=left] {{\Large \textbf{Ubuntu16.04}}};
+\draw (424.08,89.96) node [scale=1.2] [align=left] {{\LARGE \textbf{VirtualBox}}};
+\draw (352.08,219.88) node [scale=1.2] [align=left] {\textbf{{\large Ryu }}};
+
+
+\end{tikzpicture}
+
+}
+\caption{Esquema físico del proyecto.}
+\label{fig: conf_fisica}
+\end{figure}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Explicar de fuera a dentro PC->vBox->Ubuntu->{Ryu,Mininet}
+			\vspace{2em}	
+			%\item 
+			%\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+
+\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
+\end{frame}
+
+
+
+
+
+
 \begin{frame}{Protocolo OpenFlow I}
 \vspace*{-2em}
 \begin{alertblock}{\LARGE\textbf{OpenFlow}}
@@ -643,22 +752,23 @@ El tráfico se clasifica en flows en función de sus características.
 \note[item]{Contar para que se he usado cada uno.}
 \note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
 \end{frame}
-\begin{frame}
-\section{Definición del escenario de aplicación}
+% DESPUES DE CORREGIR EL TFG NO EXISTE ESTA SECCIÓN.
+% \begin{frame}
+% \section{Definición del escenario de aplicación}
 
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item Se definen los escenarios de aplicación que existen y cómo se pueden mejorar utilizando SDN. 	
-			\vspace{2em}	
-			\item 2 casos de uso.	
-			\vspace{2em}
-			\item Se explica Ingeniería de tráfico y QoS.	
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
+% \note{\large \vfill
+% 	\begin{center}
+% 		\begin{enumerate}
+% 			\item Se definen los escenarios de aplicación que existen y cómo se pueden mejorar utilizando SDN. 	
+% 			\vspace{2em}	
+% 			\item 2 casos de uso.	
+% 			\vspace{2em}
+% 			\item Se explica Ingeniería de tráfico y QoS.	
+% 			\vspace{2em}
+% 			\vfill
+% 		\end{enumerate}
+% \end{center}}
+% \end{frame}
 
 \begin{frame}{Ingeniería de Tráfico}
 \vspace*{-2em}
@@ -1303,9 +1413,38 @@ de los bucket weights con los costes de las ruta
 \end{frame}
 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  ENTORNO DE DESARROLLO
+\begin{frame}{Entorno de desarrollo}
+\vspace*{2em}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.93\textwidth]{figuras/entorno_de_desarrollo.png}
+	\caption{Entorno de desarrollo.}
+	\label{img: entorno_de_desarrollo}
+\end{figure}
+
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Como el mostrado anteriormente pero más detallado 
+			\vspace{2em}
+			\item igual para los dos casos de uso, solo cambia que en uno se usa Miniedit.
+			\vspace{2em}	
+            \item SUPONEMOS QUE YA TENEMOS CONFIGURADO/INSTALADO TODO LO DE LA FIGURA.
+			\vspace{2em}	
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino I
 \begin{frame}{Balanceador de carga multicamino I}
-\vspace*{-2em}
+%\vspace*{-2em}
 \begin{exampleblock}{Definición del escenario de aplicación}
 \begin{figure}[h!]
 	\centering
@@ -1322,7 +1461,7 @@ de los bucket weights con los costes de las ruta
 		\begin{enumerate}
 			\item  \textcolor{red}{SOLUCIONAR PROBLEMA CON EL FONDO BLANCO DE LA CAPTURA DE MINIEDIT.}
 			\vspace{2em}	
-			\item  
+			\item  Es el primer caso de uso.
 			\vspace{2em}
 			\item  
 			\vspace{2em}
@@ -1471,304 +1610,304 @@ de los bucket weights con los costes de las ruta
 
 
 
-\begin{frame}[fragile]{Metropolis}
+% \begin{frame}[fragile]{Metropolis}
 
-The \themename theme is a Beamer theme with minimal visual noise
-inspired by the \href{https://github.com/hsrmbeamertheme/hsrmbeamertheme}{\textsc{hsrm} Beamer
-Theme} by Benjamin Weiss.
+% The \themename theme is a Beamer theme with minimal visual noise
+% inspired by the \href{https://github.com/hsrmbeamertheme/hsrmbeamertheme}{\textsc{hsrm} Beamer
+% Theme} by Benjamin Weiss.
 
-Enable the theme by loading
+% Enable the theme by loading
 
-\begin{verbatim}    \documentclass{beamer}
-\usetheme{metropolis}\end{verbatim}
+% \begin{verbatim}    \documentclass{beamer}
+% \usetheme{metropolis}\end{verbatim}
 
-Note, that you have to have Mozilla's \emph{Fira Sans} font and XeTeX
-installed to enjoy this wonderful typography.
-\end{frame}
-\begin{frame}[fragile]{Sections}
-Sections group slides of the same topic
+% Note, that you have to have Mozilla's \emph{Fira Sans} font and XeTeX
+% installed to enjoy this wonderful typography.
+% \end{frame}
+% \begin{frame}[fragile]{Sections}
+% Sections group slides of the same topic
 
-\begin{verbatim}    \section{Elements}\end{verbatim}
+% \begin{verbatim}    \section{Elements}\end{verbatim}
 
-for which \themename provides a nice progress indicator \ldots
-\end{frame}
-
-
-\begin{frame}{Metropolis title formats}
-\themename supports 4 different title formats:
-\begin{itemize}
-\item Regular
-\item \textsc{Small caps}
-\item \textsc{all small caps}
-\item ALL CAPS
-\end{itemize}
-They can either be set at once for every title type or individually.
-\end{frame}
-
-{
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Small caps}
-This frame uses the \texttt{smallcaps} title format.
-
-\begin{alertblock}{Potential Problems}
-Be aware that not every font supports small caps. If for example you typeset your presentation with pdfTeX and the Computer Modern Sans Serif font, every text in small caps will be typeset with the Computer Modern Serif font instead.
-\end{alertblock}
-\end{frame}
-}
-
-{
-\metroset{titleformat frame=allsmallcaps}
-\begin{frame}{All small caps}
-This frame uses the \texttt{allsmallcaps} title format.
-
-\begin{alertblock}{Potential problems}
-As this title format also uses small caps you face the same problems as with the \texttt{smallcaps} title format. Additionally this format can cause some other problems. Please refer to the documentation if you consider using it.
-
-As a rule of thumb: just use it for plaintext-only titles.
-\end{alertblock}
-\end{frame}
-}
-
-{
-\metroset{titleformat frame=allcaps}
-\begin{frame}{All caps}
-This frame uses the \texttt{allcaps} title format.
-
-\begin{alertblock}{Potential Problems}
-This title format is not as problematic as the \texttt{allsmallcaps} format, but basically suffers from the same deficiencies. So please have a look at the documentation if you want to use it.
-\end{alertblock}
-\end{frame}
-}
+% for which \themename provides a nice progress indicator \ldots
+% \end{frame}
 
 
-\begin{frame}[fragile]{Typography}
-\begin{verbatim}The theme provides sensible defaults to
-\emph{emphasize} text, \alert{accent} parts
-or show \textbf{bold} results.\end{verbatim}
+% \begin{frame}{Metropolis title formats}
+% \themename supports 4 different title formats:
+% \begin{itemize}
+% \item Regular
+% \item \textsc{Small caps}
+% \item \textsc{all small caps}
+% \item ALL CAPS
+% \end{itemize}
+% They can either be set at once for every title type or individually.
+% \end{frame}
 
-\begin{center}becomes\end{center}
+% {
+% \metroset{titleformat frame=smallcaps}
+% \begin{frame}{Small caps}
+% This frame uses the \texttt{smallcaps} title format.
 
-The theme provides sensible defaults to \emph{emphasize} text,
-\alert{accent} parts or show \textbf{bold} results.
-\end{frame}
+% \begin{alertblock}{Potential Problems}
+% Be aware that not every font supports small caps. If for example you typeset your presentation with pdfTeX and the Computer Modern Sans Serif font, every text in small caps will be typeset with the Computer Modern Serif font instead.
+% \end{alertblock}
+% \end{frame}
+% }
 
-\begin{frame}{Font feature test}
-\begin{itemize}
-\item Regular
-\item \textit{Italic}
-\item \textsc{Small Caps}
-\item \textbf{Bold}
-\item \textbf{\textit{Bold Italic}}
-\item \textbf{\textsc{Bold Small Caps}}
-\item \texttt{Monospace}
-\item \texttt{\textit{Monospace Italic}}
-\item \texttt{\textbf{Monospace Bold}}
-\item \texttt{\textbf{\textit{Monospace Bold Italic}}}
-\end{itemize}
-\end{frame}
+% {
+% \metroset{titleformat frame=allsmallcaps}
+% \begin{frame}{All small caps}
+% This frame uses the \texttt{allsmallcaps} title format.
 
-\begin{frame}{Lists}
-\begin{columns}[T,onlytextwidth]
-\column{0.33\textwidth}
-Items
-\begin{itemize}
-\item Milk \item Eggs \item Potatoes
-\end{itemize}
+% \begin{alertblock}{Potential problems}
+% As this title format also uses small caps you face the same problems as with the \texttt{smallcaps} title format. Additionally this format can cause some other problems. Please refer to the documentation if you consider using it.
 
-\column{0.33\textwidth}
-Enumerations
-\begin{enumerate}
-\item First, \item Second and \item Last.
-\end{enumerate}
+% As a rule of thumb: just use it for plaintext-only titles.
+% \end{alertblock}
+% \end{frame}
+% }
 
-\column{0.33\textwidth}
-Descriptions
-\begin{description}
-\item[PowerPoint] Meeh. \item[Beamer] Yeeeha.
-\end{description}
-\end{columns}
-\end{frame}
-\begin{frame}{Animation}
-\begin{itemize}[<+- | alert@+>]
-\item \alert<4>{This is\only<4>{ really} important}
-\item Now this
-\item And now this
-\end{itemize}
-\end{frame}
-\begin{frame}{Figures}
-\begin{figure}
-\newcounter{density}
-\setcounter{density}{20}
-\begin{tikzpicture}
-\def\couleur{alerted text.fg}
-\path[coordinate] (0,0)  coordinate(A)
-++( 90:5cm) coordinate(B)
-++(0:5cm) coordinate(C)
-++(-90:5cm) coordinate(D);
-\draw[fill=\couleur!\thedensity] (A) -- (B) -- (C) --(D) -- cycle;
-\foreach \x in {1,...,40}{%
-\pgfmathsetcounter{density}{\thedensity+20}
-\setcounter{density}{\thedensity}
-\path[coordinate] coordinate(X) at (A){};
-\path[coordinate] (A) -- (B) coordinate[pos=.10](A)
--- (C) coordinate[pos=.10](B)
--- (D) coordinate[pos=.10](C)
--- (X) coordinate[pos=.10](D);
-\draw[fill=\couleur!\thedensity] (A)--(B)--(C)-- (D) -- cycle;
-}
-\end{tikzpicture}
-\caption{Rotated square from
-\href{http://www.texample.net/tikz/examples/rotated-polygons/}{texample.net}.}
-\end{figure}
-\end{frame}
-\begin{frame}{Tables}
-\begin{table}
-\caption{Largest cities in the world (source: Wikipedia)}
-\begin{tabular}{@{} lr @{}}
-\toprule
-City & Population\\
-\midrule
-Mexico City & 20,116,842\\
-Shanghai & 19,210,000\\
-Peking & 15,796,450\\
-Istanbul & 14,160,467\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{frame}
-\begin{frame}{Blocks}
-Three different block environments are pre-defined and may be styled with an
-optional background color.
+% {
+% \metroset{titleformat frame=allcaps}
+% \begin{frame}{All caps}
+% This frame uses the \texttt{allcaps} title format.
 
-\begin{columns}[T,onlytextwidth]
-\column{0.5\textwidth}
-\begin{block}{Default}
-Block content.
-\end{block}
+% \begin{alertblock}{Potential Problems}
+% This title format is not as problematic as the \texttt{allsmallcaps} format, but basically suffers from the same deficiencies. So please have a look at the documentation if you want to use it.
+% \end{alertblock}
+% \end{frame}
+% }
 
-\begin{alertblock}{Alert}
-Block content.
-\end{alertblock}
 
-\begin{exampleblock}{Example}
-Block content.
-\end{exampleblock}
+% \begin{frame}[fragile]{Typography}
+% \begin{verbatim}The theme provides sensible defaults to
+% \emph{emphasize} text, \alert{accent} parts
+% or show \textbf{bold} results.\end{verbatim}
 
-\column{0.5\textwidth}
+% \begin{center}becomes\end{center}
 
-\metroset{block=fill}
+% The theme provides sensible defaults to \emph{emphasize} text,
+% \alert{accent} parts or show \textbf{bold} results.
+% \end{frame}
 
-\begin{block}{Default}
-Block content.
-\end{block}
+% \begin{frame}{Font feature test}
+% \begin{itemize}
+% \item Regular
+% \item \textit{Italic}
+% \item \textsc{Small Caps}
+% \item \textbf{Bold}
+% \item \textbf{\textit{Bold Italic}}
+% \item \textbf{\textsc{Bold Small Caps}}
+% \item \texttt{Monospace}
+% \item \texttt{\textit{Monospace Italic}}
+% \item \texttt{\textbf{Monospace Bold}}
+% \item \texttt{\textbf{\textit{Monospace Bold Italic}}}
+% \end{itemize}
+% \end{frame}
 
-\begin{alertblock}{Alert}
-Block content.
-\end{alertblock}
+% \begin{frame}{Lists}
+% \begin{columns}[T,onlytextwidth]
+% \column{0.33\textwidth}
+% Items
+% \begin{itemize}
+% \item Milk \item Eggs \item Potatoes
+% \end{itemize}
 
-\begin{exampleblock}{Example}
-Block content.
-\end{exampleblock}
+% \column{0.33\textwidth}
+% Enumerations
+% \begin{enumerate}
+% \item First, \item Second and \item Last.
+% \end{enumerate}
 
-\end{columns}
-\end{frame}
-\begin{frame}{Math}
-\begin{equation*}
-e = \lim_{n\to \infty} \left(1 + \frac{1}{n}\right)^n
-\end{equation*}
-\end{frame}
-\begin{frame}{Line plots}
-\begin{figure}
-\begin{tikzpicture}
-\begin{axis}[
-mlineplot,
-width=0.9\textwidth,
-height=6cm,
-]
+% \column{0.33\textwidth}
+% Descriptions
+% \begin{description}
+% \item[PowerPoint] Meeh. \item[Beamer] Yeeeha.
+% \end{description}
+% \end{columns}
+% \end{frame}
+% \begin{frame}{Animation}
+% \begin{itemize}[<+- | alert@+>]
+% \item \alert<4>{This is\only<4>{ really} important}
+% \item Now this
+% \item And now this
+% \end{itemize}
+% \end{frame}
+% \begin{frame}{Figures}
+% \begin{figure}
+% \newcounter{density}
+% \setcounter{density}{20}
+% \begin{tikzpicture}
+% \def\couleur{alerted text.fg}
+% \path[coordinate] (0,0)  coordinate(A)
+% ++( 90:5cm) coordinate(B)
+% ++(0:5cm) coordinate(C)
+% ++(-90:5cm) coordinate(D);
+% \draw[fill=\couleur!\thedensity] (A) -- (B) -- (C) --(D) -- cycle;
+% \foreach \x in {1,...,40}{%
+% \pgfmathsetcounter{density}{\thedensity+20}
+% \setcounter{density}{\thedensity}
+% \path[coordinate] coordinate(X) at (A){};
+% \path[coordinate] (A) -- (B) coordinate[pos=.10](A)
+% -- (C) coordinate[pos=.10](B)
+% -- (D) coordinate[pos=.10](C)
+% -- (X) coordinate[pos=.10](D);
+% \draw[fill=\couleur!\thedensity] (A)--(B)--(C)-- (D) -- cycle;
+% }
+% \end{tikzpicture}
+% \caption{Rotated square from
+% \href{http://www.texample.net/tikz/examples/rotated-polygons/}{texample.net}.}
+% \end{figure}
+% \end{frame}
+% \begin{frame}{Tables}
+% \begin{table}
+% \caption{Largest cities in the world (source: Wikipedia)}
+% \begin{tabular}{@{} lr @{}}
+% \toprule
+% City & Population\\
+% \midrule
+% Mexico City & 20,116,842\\
+% Shanghai & 19,210,000\\
+% Peking & 15,796,450\\
+% Istanbul & 14,160,467\\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+% \end{frame}
+% \begin{frame}{Blocks}
+% Three different block environments are pre-defined and may be styled with an
+% optional background color.
 
-\addplot {sin(deg(x))};
-\addplot+[samples=100] {sin(deg(2*x))};
+% \begin{columns}[T,onlytextwidth]
+% \column{0.5\textwidth}
+% \begin{block}{Default}
+% Block content.
+% \end{block}
 
-\end{axis}
-\end{tikzpicture}
-\end{figure}
-\end{frame}
-\begin{frame}{Bar charts}
-\begin{figure}
-\begin{tikzpicture}
-\begin{axis}[
-mbarplot,
-xlabel={Foo},
-ylabel={Bar},
-width=0.9\textwidth,
-height=6cm,
-]
+% \begin{alertblock}{Alert}
+% Block content.
+% \end{alertblock}
 
-\addplot plot coordinates {(1, 20) (2, 25) (3, 22.4) (4, 12.4)};
-\addplot plot coordinates {(1, 18) (2, 24) (3, 23.5) (4, 13.2)};
-\addplot plot coordinates {(1, 10) (2, 19) (3, 25) (4, 15.2)};
+% \begin{exampleblock}{Example}
+% Block content.
+% \end{exampleblock}
 
-\legend{lorem, ipsum, dolor}
+% \column{0.5\textwidth}
 
-\end{axis}
-\end{tikzpicture}
-\end{figure}
-\end{frame}
-\begin{frame}{Quotes}
-\begin{quote}
-Veni, Vidi, Vici
-\end{quote}
-\end{frame}
+% \metroset{block=fill}
 
-{%
-\setbeamertemplate{frame footer}{My custom footer }
+% \begin{block}{Default}
+% Block content.
+% \end{block}
 
-\begin{frame}[fragile]{Frame footer}
-\themename defines a custom beamer template to add a text to the footer. It can be set via
-\begin{verbatim}\setbeamertemplate{frame footer}{My custom footer}\end{verbatim}
-\end{frame}
-}
+% \begin{alertblock}{Alert}
+% Block content.
+% \end{alertblock}
 
-\begin{frame}{References}
-Some references to showcase [allowframebreaks] \cite{knuth92,ConcreteMath,Simpson,Er01,greenwade93}
-\end{frame}
+% \begin{exampleblock}{Example}
+% Block content.
+% \end{exampleblock}
 
-\begin{frame}{Summary}
+% \end{columns}
+% \end{frame}
+% \begin{frame}{Math}
+% \begin{equation*}
+% e = \lim_{n\to \infty} \left(1 + \frac{1}{n}\right)^n
+% \end{equation*}
+% \end{frame}
+% \begin{frame}{Line plots}
+% \begin{figure}
+% \begin{tikzpicture}
+% \begin{axis}[
+% mlineplot,
+% width=0.9\textwidth,
+% height=6cm,
+% ]
 
-Get the source of this theme and the demo presentation from
+% \addplot {sin(deg(x))};
+% \addplot+[samples=100] {sin(deg(2*x))};
 
-\begin{center}\url{github.com/matze/mtheme}\end{center}
+% \end{axis}
+% \end{tikzpicture}
+% \end{figure}
+% \end{frame}
+% \begin{frame}{Bar charts}
+% \begin{figure}
+% \begin{tikzpicture}
+% \begin{axis}[
+% mbarplot,
+% xlabel={Foo},
+% ylabel={Bar},
+% width=0.9\textwidth,
+% height=6cm,
+% ]
 
-The theme \emph{itself} is licensed under a
-\href{http://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons
-Attribution-ShareAlike 4.0 International License}.
+% \addplot plot coordinates {(1, 20) (2, 25) (3, 22.4) (4, 12.4)};
+% \addplot plot coordinates {(1, 18) (2, 24) (3, 23.5) (4, 13.2)};
+% \addplot plot coordinates {(1, 10) (2, 19) (3, 25) (4, 15.2)};
 
-\begin{center}\ccbysa\end{center}
+% \legend{lorem, ipsum, dolor}
 
-\end{frame}
+% \end{axis}
+% \end{tikzpicture}
+% \end{figure}
+% \end{frame}
+% \begin{frame}{Quotes}
+% \begin{quote}
+% Veni, Vidi, Vici
+% \end{quote}
+% \end{frame}
 
-\begin{frame}[standout]
-Questions?
-\end{frame}
+% {%
+% \setbeamertemplate{frame footer}{My custom footer }
 
-\appendix
+% \begin{frame}[fragile]{Frame footer}
+% \themename defines a custom beamer template to add a text to the footer. It can be set via
+% \begin{verbatim}\setbeamertemplate{frame footer}{My custom footer}\end{verbatim}
+% \end{frame}
+% }
 
-\begin{frame}[fragile]{Backup slides}
-Sometimes, it is useful to add slides at the end of your presentation to
-refer to during audience questions.
+% \begin{frame}{References}
+% Some references to showcase [allowframebreaks] \cite{knuth92,ConcreteMath,Simpson,Er01,greenwade93}
+% \end{frame}
 
-The best way to do this is to include the \verb|appendixnumberbeamer|
-package in your preamble and call \verb|\appendix| before your backup slides.
+% \begin{frame}{Summary}
 
-\themename will automatically turn off slide numbering and progress bars for
-slides in the appendix.
-\end{frame}
+% Get the source of this theme and the demo presentation from
 
-\begin{frame}[allowframebreaks]{References}
+% \begin{center}\url{github.com/matze/mtheme}\end{center}
 
-\bibliography{demo}
-\bibliographystyle{abbrv}
+% The theme \emph{itself} is licensed under a
+% \href{http://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons
+% Attribution-ShareAlike 4.0 International License}.
 
-\end{frame}
+% \begin{center}\ccbysa\end{center}
+
+% \end{frame}
+
+% \begin{frame}[standout]
+% Questions?
+% \end{frame}
+
+% \appendix
+
+% \begin{frame}[fragile]{Backup slides}
+% Sometimes, it is useful to add slides at the end of your presentation to
+% refer to during audience questions.
+
+% The best way to do this is to include the \verb|appendixnumberbeamer|
+% package in your preamble and call \verb|\appendix| before your backup slides.
+
+% \themename will automatically turn off slide numbering and progress bars for
+% slides in the appendix.
+% \end{frame}
+
+% \begin{frame}[allowframebreaks]{References}
+
+% \bibliography{demo}
+% \bibliographystyle{abbrv}
+
+% \end{frame}
 
 \end{document}
