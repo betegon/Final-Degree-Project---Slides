@@ -196,6 +196,9 @@
 \pgfplotsset{width=10cm,compat=1.9}
 \usepackage{pgfplotstable}
 
+\newcommand{\nologo}{\setbeamertemplate{logo}{}} % CREAMOS \nologo que es un logo vacio, para poder quitar el logo en las diapos que tengan figuras que ocupen bastante.
+
+
 %% ---- COMIENZA EL DOCUMENTO ----
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -404,7 +407,7 @@ nodes near coords align={horizontal},
 
 
 \begin{frame}{Estado del arte}
-\vspace{2em}
+\vspace{1.1em}
 \begin{figure}[h!]
 \centering
 \hspace*{-0.30in}% PARA AJUSTAR IZQ-DCH LA FIGURA.
@@ -1444,15 +1447,23 @@ de los bucket weights con los costes de las ruta
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino I
 \begin{frame}{Balanceador de carga multicamino I}
-%\vspace*{-2em}
-\begin{exampleblock}{Definición del escenario de aplicación}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1\textwidth]{Imagenes/topologia_multicamino.png}
-	\caption{Topología elegida para el routing multicamino con balanceo de carga.}
-	\label{img: topologia_multicamino}
-\end{figure}
+\vspace*{-1em}
+\begin{exampleblock}{\centering Definición del escenario de aplicación}
 \end{exampleblock}
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=1\textwidth]{Imagenes/topologia_multicamino_puertos.png}
+%	\caption{Topología elegida para el routing multicamino con balanceo de carga.}
+%\end{figure}
+\begin{figure}[!h]
+    \centering
+
+\noindent\makebox[\textwidth][l]{%
+  \hspace{-\dimexpr\oddsidemargin+1in}%
+  \includegraphics[width=\paperwidth]{Imagenes/topologia_multicamino_puertos.png}%
+}
+\end{figure}
+
 
 
 
@@ -1461,9 +1472,11 @@ de los bucket weights con los costes de las ruta
 		\begin{enumerate}
 			\item  \textcolor{red}{SOLUCIONAR PROBLEMA CON EL FONDO BLANCO DE LA CAPTURA DE MINIEDIT.}
 			\vspace{2em}	
-			\item  Es el primer caso de uso.
+			\item  Primer caso de uso.
 			\vspace{2em}
-			\item  
+			\item  Diseñamos en Miniedit y configuramos el controlador. IP  loopback, puerto 6633, remote controller y OpenFlow 1.3
+			\vspace{2em}
+            \item  Ping H1-H2 para ver que funciona.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1472,30 +1485,92 @@ de los bucket weights con los costes de las ruta
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino II
+{\nologo
 \begin{frame}{Balanceador de carga multicamino II} 
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
+	\vspace*{0.5em}
+    \begin{exampleblock}{\centering Inicio del controlador y descubrimiento de rutas}
+%	\begin{figure}[h!]			
+%			\includegraphics[width=0.9\textwidth]{Imagenes/miniedit_multicamino_descubrimiento_de_rutas.png}
+%		\end{figure}
+
+	\end{exampleblock}
+	\begin{figure}[!h]
+    	\centering
+		\noindent\makebox[\textwidth][r]{%
+  		\includegraphics[width=0.85\paperwidth]{Imagenes/miniedit_multicamino_descubrimiento_de_rutas.png}%
+}
+	\end{figure}
+		
+
+
+
+
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item  
+			\item  Se vería solo hasta se ha llamado. para los swtiches. Despues hacemos un ping para que se tenga constancia de los hosts.
 			\vspace{2em}	
-			\item  
+			\item ir a la diapo anterior y que las rutas concuerdan.
 			\vspace{2em}
-			\item  
+            \item  Costes (se ha puesto que el ancho de banda del enlace sea el mismo que el de referencia, así el coste de enlace es 1, y coste total=nº enlaces).
+			\vspace{2em}
+			\item  Salen los caminos de ida y vuelta porque suponíamos que eran bidireccionales
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
+} %fin de \nologo
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino III
+\begin{frame}{Balanceador de carga multicamino III}
+\vspace*{2em}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{Imagenes/flows.png}
+	\caption{Flows.}
+\end{figure}
+
+
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+        \item  Veamos si las rutas encontradas han sido instaladas en s5. Este es el primer paso. haremos flows->grupos-> buckets->actions
+			\vspace{2em}
+	        \item Cada flow se encarga del matching de pkts IP y ARP (uno de cada)
+            \vspace{2em}
+            \item Se ridirigen los dos al mismo group:...
+			\vspace{2em}
+            \vspace{2em}	
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% SIGUIENTE DIAPO TIENE QUE SE DE LOS GRUPOS:
+% COMENTAR QUE SE VE EL GRUPO Y QUE TIENE DOS BUCKETS...
+% MISMO ESTILO QUE LA DIAPO DE dump-flows, hacer captura del tfg.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \begin{frame}{Balanceador de carga multicamino III}
 \vspace*{-2em}
 \begin{exampleblock}{AA}
