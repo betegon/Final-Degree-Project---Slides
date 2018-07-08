@@ -1529,7 +1529,6 @@ de los bucket weights con los costes de las ruta
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\textwidth]{Imagenes/flows.png}
-	\caption{Flows.}
 \end{figure}
 
 
@@ -1542,49 +1541,37 @@ de los bucket weights con los costes de las ruta
             \vspace{2em}
             \item Se ridirigen los dos al mismo group:...
 			\vspace{2em}
+            \item \textcolor{red}{YO QUITABA ESTA DIAPO Y PONIA DIRECTAMENTE LA SIGUIENTE, LA DE LOS GROUPS (SON DEMASIADAS DIAPOS SI NO).}
             \vspace{2em}	
 			\vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-% SIGUIENTE DIAPO TIENE QUE SE DE LOS GRUPOS:
-% COMENTAR QUE SE VE EL GRUPO Y QUE TIENE DOS BUCKETS...
-% MISMO ESTILO QUE LA DIAPO DE dump-flows, hacer captura del tfg.
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+{\nologo %quito el logo porque queda cortado con la imagen.
+\begin{frame}{Balanceador de carga multicamino IV}
+\vspace*{-0.7em}
+\begin{figure}[!h]
+    \centering
 
-\begin{frame}{Balanceador de carga multicamino III}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
+\noindent\makebox[\textwidth][l]{%
+  \hspace{-\dimexpr\oddsidemargin+1in}%
+  \includegraphics[width=\paperwidth]{Imagenes/topologia_multicamino_puertos.png}%
+}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{Imagenes/groups.png}
+\end{figure}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item  
+			\item  Hay un solo grupo con 2 buckets en la Group Table
 			\vspace{2em}	
-			\item  
+			\item bucket weight se corresponde con el coste: 2/3=4/6=> 2/(2+3)=4/(4+6)=0.4
 			\vspace{2em}
 			\item  
 			\vspace{2em}
@@ -1592,7 +1579,7 @@ de los bucket weights con los costes de las ruta
 		\end{enumerate}
 \end{center}}
 \end{frame}
-
+} %fin de \nologo
 
 %%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
 %\begin{itemize}[<+- | alert@+>]
@@ -1603,24 +1590,74 @@ de los bucket weights con los costes de las ruta
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino IV
-\begin{frame}{Balanceador de carga multicamino IV}
+{\nologo % quitamos el logo porque con la figura queda 
+\begin{frame}{Balanceador de carga multicamino V}
 \vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item
-\end{enumerate}
+\begin{exampleblock}{\centering Creación de tráfico TCP con iPerf.}
+
 \end{exampleblock}
 
-
+\begin{figure}[h!]
+	\centering	
+	\par
+\noindent\makebox[\textwidth][l]{%
+  \hspace{-\dimexpr\oddsidemargin+1in}%
+  \includegraphics[width=0.5\paperwidth]{Imagenes/iperf2_server.png}%
+  \includegraphics[width=0.5\paperwidth]{Imagenes/iperf2_client.png}%
+}
+	\par
+\end{figure}
+% \begin{figure}[h!]
+% 	\centering	
+% 	\par
+% 	\includegraphics[width=0.49\textwidth]{Imagenes/iperf2_server.png}
+% 	\includegraphics[width=0.49\textwidth]{Imagenes/iperf2_client.png}
+% 	%\hfill
+% 	\par
+% 	\caption{Captura del envío de tráfico entre cliente y servidor iPerf.}
+% 	\label{img: iperf1}
+% \end{figure}
 
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
+			\item  Creamos tráfico TCP con iPerf. 50 clientes en paralelo.
+			\vspace{2em}	 
+			\item  en Open vSwitch ultimas versiones para trafico TCP se realiza un hash simetrico (igual ambos sentidos) con los puertos de origen y destino y se elige el bucket teniendo en cuenta el hash (hash1->rutaX siempre...) 
+			\vspace{2em}
+			\item  mirando la figura de la derecha (CLIENTE) se ve como se conectan los clientes cada uno con su puerto (port 56300, port 56224,...)
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+} %fin de \nologo
+
+
+
+
+
+{\nologo %quito el logo porque queda cortado con la imagen.
+\begin{frame}{Balanceador de carga multicamino VI}
+\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{Imagenes/dump_ports_balanceado.png}
+\end{figure}
+
+%%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
+\begin{description}%[<+- | alert@+>] % para mostar uno a uno.
+	\item[\textit{Ruta 1}]  $Traffic(1)=\frac{Tx2}{Rx3}\times{100}=\frac{13448402}{21746866}\times{100}=61,83\% $
+	
+	\item[\textit{Ruta 2}] $Traffic(2)=\frac{Tx1}{Rx3}\times{100}=\frac{8304407}{21746866}\times{100}=38,18\% $
+\end{description}
+\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
 			\item  
-			\vspace{2em}	 y
-			\item  
+			\vspace{2em}	
+			\item
 			\vspace{2em}
 			\item  
 			\vspace{2em}
@@ -1628,8 +1665,12 @@ de los bucket weights con los costes de las ruta
 		\end{enumerate}
 \end{center}}
 \end{frame}
+} %fin de \nologo
 
-
+%%%%%%%%%% PONER NOTAS EN LA DIAPO VI DEL BALANCEO (LA ULTIMA QUE HE HECHO).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{frame}{AAAAA}
 \vspace*{-2em}
