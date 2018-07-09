@@ -26,6 +26,15 @@
 
 \usepackage{hyperref} % LINKS
 
+%PARA LA TABLAS
+ \usepackage{booktabs}
+ \usepackage{newtxtext, newtxmath}
+ \usepackage{threeparttable}
+ \usepackage{graphicx}
+ \usepackage[binary-units=true]{siunitx}
+\renewcommand{\tablename}{Tabla} %para nombrar Tablas a las tablas.
+
+
 
 \usepackage{pgfpages} %PARA LAS NOTAS
 \setbeameroption{show notes}                        
@@ -156,7 +165,7 @@
 
 
 \title{Estudio de técnicas de Ingeniería de Tráfico basadas en SDN}
-\subtitle{Study of SDN Traffic Engineering techniques}
+\subtitle{Study of SDN Traffic Engineering Techniques}
 
 %\author{Betegon Garcia, Miguel}
 %\institute{Center for modern beamer themes}
@@ -168,7 +177,7 @@
 	Grado en Ingeniería de Tecnologías de Telecomunicación
 }
 %\date{\today}
-\date{Junio, 2018}
+\date{Julio, 2018}
 
 \titlegraphic{
 	
@@ -1644,22 +1653,25 @@ de los bucket weights con los costes de las ruta
 	\centering
 	\includegraphics[width=1\textwidth]{Imagenes/dump_ports_balanceado.png}
 \end{figure}
-
 %%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
-\begin{description}%[<+- | alert@+>] % para mostar uno a uno.
-	\item[\textit{Ruta 1}]  $Traffic(1)=\frac{Tx2}{Rx3}\times{100}=\frac{13448402}{21746866}\times{100}=61,83\% $
-	
-	\item[\textit{Ruta 2}] $Traffic(2)=\frac{Tx1}{Rx3}\times{100}=\frac{8304407}{21746866}\times{100}=38,18\% $
-\end{description}
 \end{exampleblock}
+\begin{center}
+	\begin{description}%[<+- | alert@+>] % para mostar uno a uno.
+		\large
+		\item[\textit{Ruta 1}]  $Traffic(1)=\frac{Tx2}{Rx3}\times{100}=\frac{13448402}{21746866}\times{100}=61,83\% $
+	
+		\item[\textit{Ruta 2}] $Traffic(2)=\frac{Tx1}{Rx3}\times{100}=\frac{8304407}{21746866}\times{100}=38,18\% $
+	\end{description}
+\end{center}
+
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item  
+			\item  se reciben por el puerto3 y se envian por los otros dos (p3=p1+p2)
 			\vspace{2em}	
-			\item
+			\item El resultado se asemeja al teórico 4/10,6/10. sabiendo que una pequeña fracciñón del tráfico es creado por las comunicaciones entres switches. 
 			\vspace{2em}
-			\item  
+			\item  CONCLUSION: Se ha implementado correctamente el LB.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1667,11 +1679,152 @@ de los bucket weights con los costes de las ruta
 \end{frame}
 } %fin de \nologo
 
-%%%%%%%%%% PONER NOTAS EN LA DIAPO VI DEL BALANCEO (LA ULTIMA QUE HE HECHO).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%% MONITORIZACIÓN DEL TRÁFICO CON CIERTA QoS I
+%{\nologo %quito el logo porque queda cortado con la imagen.
+\begin{frame}{Monitorización del tráfico con cierta QoS I}
+%\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
+
+	Hoy en día la mayoría de las redes hacen uso de la calidad de servicio (QoS). 
+    \begin{itemize}
+    \item[\rightarrow] SDN debe ofrecer al menos
+los mismos servicios y aplicaciones que las redes tradicionales.
+
+    \end{itemize}
+    
+\begin{table}[h]
+	\begin{threeparttable}
+		\begin{tabular*}{\textwidth}{
+				@{\extracolsep{\fill}\hspace{\tabcolsep}}
+				l
+				c
+				c
+				c
+				c
+				c
+				c
+				@{\hspace{\tabcolsep}}
+			}
+			\toprule
+			& \multicolumn{2}{c}{Fase 1} & \multicolumn{2}{c}{Fase 2}  & \multicolumn{2}{c}{Fase 3} \\
+			\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+			Tarifa				  & Datos         		& Tasa   		    & Datos    		& Tasa		   		& Datos   		   	& Tasa  			 \\
+			\midrule
+			Estándar              & \SI{2}{MB}   		& \SI{1}{Mbps}    	& \SI{1}{MB}  	& \SI{.2}{Mbps}    	&  --				& --      			 \\
+			\addlinespace
+			Premium               & $\infty$           	& \SI{2}{Mbps}      & $\infty$      & \SI{2}{Mbps}      & $\infty$          & \SI{2}{Mbps}       \\
+			\addlinespace
+			\bottomrule
+		\end{tabular*}
+
+	\end{threeparttable}
+	\label{tab: fases_tarifas}
+    \caption[Tarifas móviles y sus fases en función del consumo de datos.]
+	{Tarifas móviles y sus fases en función del consumo de datos.}
+	
+\end{table}
+\note{\large \vfill
+	\begin{center}
+		\begin{description}
+			\item[ESTANDAR]\textbf{1a fase}: 2 MB de datos a 1 Mbps. \textbf{2a fase}: 2 MB se reduce el 80\% para el siguiente 1 MB. \textbf{3a fase}: gastando los 3 MB, se queda sin poder transmitir ni recibir datos (i.e. la velocidad será 0 Kbps)
+			\vspace{2em}	
+			\item[PREMIUM] Datos ilimitados todo el mes, Vmin=2Mbps.
+			\vspace{2em}
+			\item Caso de uso incorpora QoS en una red SDN para ver que facil se implementa.. Se pretende
+enseñar cómo, mediante QoS, se pueden transferir los datos de una red en función
+de la prioridad basada en los tipos de datos, y reservar ancho de banda para una
+comunicación con el objetivo de comunicar dos puntos con un constante ancho de
+banda en la red.
+			\vspace{2em}
+			\vfill
+		\end{description}
+\end{center}}
+\end{frame}
+%} %fin de \nologo
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%% MONITORIZACIÓN DEL TRÁFICO CON CIERTA QoS II
+{\nologo %quito el logo porque queda cortado con la imagen.
+\begin{frame}{Monitorización del tráfico con cierta QoS II}
+%\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{Imagenes/dump_ports_balanceado.png}
+\end{figure}
+%%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
+
+%\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item 
+			\vspace{2em}	
+			\item 
+			\vspace{2em}
+			\item 
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+} %fin de \nologo
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%% MONITORIZACIÓN DEL TRÁFICO CON CIERTA QoS III
+{\nologo %quito el logo porque queda cortado con la imagen.
+\begin{frame}{Monitorización del tráfico con cierta QoS III}
+%\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{Imagenes/dump_ports_balanceado.png}
+\end{figure}
+%%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
+
+%\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item 
+			\vspace{2em}	
+			\item 
+			\vspace{2em}
+			\item 
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+} %fin de \nologo
+
+
+
+
+
+
 \begin{frame}{AAAAA}
 \vspace*{-2em}
 \begin{exampleblock}{AA}
