@@ -63,7 +63,7 @@
 %\usepackage{xcolor} % CAMBIAR TEXTO DE COLOR (PARA LAS NOTAS)
 \usepackage{wrapfig} % FIGURAS  A UN LADO, CON TEXTO AL OTRO.
 
-
+\usepackage[export]{adjustbox} %PONER A LA IZQUIERDA LAS FIGURAS, NECESARIO PARA USAR \left y \right. 	eg.\includegraphics..[\textwidth,\left]..
 
 
 
@@ -214,14 +214,12 @@
 
 \begin{frame}
   \titlepage
-\note[item]{\textcolor{red}{COMPROBAR QUE FUNCIONA BIEN CON UNA SEGUNDA PANTALLA, QUE SE MUESTRAN LAS NOTAS EN UNA Y LA PRESENTACIÓN EN OTRA.}}
-		\note[item]{\textcolor{red}{COMPROBARLO CON LAS PANTALLAS DE LA PRESENTACIÓN (MI ORDE NO TIENE VGA, PREGUNTAR SI HAY HDMI Y LLEVAR EL MIO POR SI ACASO)}}
 		\note[item]{\textcolor{red}{EN LA TERMINAL, \$: pdfpc main.pdf - -notes=right}}
-		\note[item]{\textcolor{red}{https://bugs.kde.org/show\_bug.cgi?id=152585}}
-		\note[item]{\textcolor{red}{ESTOY COMPILANDO DESDE OVERLEAF CON XUALATEX. CON XELATEX PUEDE FUNCIONAR CREO, PERO CON PDFlatex no. PDFlatex no entiende la fuente (fira) y utiliza las suyas}}
-			\note[item]{\textcolor{red}{CUIDADO, SE ME PONE EL TEXTO DE COLOR BLANCO Y NO SE VE, ES CULPA DE USAR NOTAS (PFGPAGES) Y XELATEX}}
-            \note[item]{\textcolor{red}{SI USO TODOs SE JOROBA LA FUENTE Y DA ERRORES. POR ESO HE PUESTO EL TEXTO QUE NO ES DE NOTAS SINO DE COSAS PARA CAMBIAR DE LAS DIAPOSITIVAS EN ROJO}}
-            \note[item]{\textcolor{red}{ECHAR UN OJO A LA PORTADA, POR SI NO PRESENTARÁ EN JUNIO (Pone Junio, 2018)}}
+% 		\note[item]{\textcolor{red}{https://bugs.kde.org/show\_bug.cgi?id=152585}}
+% 		\note[item]{\textcolor{red}{ESTOY COMPILANDO DESDE OVERLEAF CON XUALATEX. CON XELATEX PUEDE FUNCIONAR CREO, PERO CON PDFlatex no. PDFlatex no entiende la fuente (fira) y utiliza las suyas}}
+% 			\note[item]{\textcolor{red}{CUIDADO, SE ME PONE EL TEXTO DE COLOR BLANCO Y NO SE VE, ES CULPA DE USAR NOTAS (PFGPAGES) Y XELATEX}}
+%             \note[item]{\textcolor{red}{SI USO TODOs SE JOROBA LA FUENTE Y DA ERRORES. POR ESO HE PUESTO EL TEXTO QUE NO ES DE NOTAS SINO DE COSAS PARA CAMBIAR DE LAS DIAPOSITIVAS EN ROJO}}
+%             \note[item]{\textcolor{red}{ECHAR UN OJO A LA PORTADA, POR SI NO PRESENTARÁ EN JUNIO (Pone Junio, 2018)}}
 \end{frame}
 
 
@@ -240,7 +238,7 @@
     \note{\LARGE \vfill
 		\begin{center}
 			\begin{enumerate}
-				\item Son los capítulos del trabajo, el índice hace de ''Estructura de proyecto''.
+				\item Comenzaré con ... le seguiran los conceptos teóricos en los que se basa el proyecto, después  se comentará la parte técnica antes de pasar a la implementación y por último acabaré con las conclusiones y lineas futuras.
 				\vfill
 			\end{enumerate}
 		\end{center}}
@@ -256,10 +254,10 @@
 \vspace{-2em}
 Las redes definidas por software (SDN) surgen a principios de 2010 \alert{por necesidad}:
 \begin{itemize}
-	\item La mayoría de las redes tradicionales fueron diseñadas para aplicaciones cliente-servidor que se ejecutan en una infraestructura no virtualizada.
+	\item La mayoría de las redes tradicionales fueron diseñadas como aplicaciones cliente-servidor que se ejecutan en una infraestructura no virtualizada.
 \end{itemize}
 
-SDN se ha establecido en la adultez temprana como un producto conocido.
+SDN se ha establecido como un producto conocido.
 
 Es una realidad que muchas de las empresas y proveedores de servicios de todo el mundo ya han adoptado.
 
@@ -267,11 +265,11 @@ Es una realidad que muchas de las empresas y proveedores de servicios de todo el
 \note{\large \vfill
 	\begin{center}
 	\begin{enumerate}
-		\item NO son la solución a un problema sin resolver sino que resuelven de una forma mas eficiente que las soluciones tradicionales. 		
+		\item NO son la solución a un problema sin resolver..
 		\vspace{2em}
-		\item SDN ha crecido más allá de su adolescencia y euforia prematura...	
+		\item  redes tradicionales fueron diseñadas como aplicaciones cliente-servidor que se ejecutan en una infraestructura no virtualizada.
 		\vspace{2em}	
-		\item NO es una próxima novedad en el horizonte de la creación de redes...	
+		\item Es una realidad que muchas de las empresas y proveedores de servicios de todo el mundo ya han adoptado. ENLAZAR CON SIGUIENTE DIAPO!!
 		\vspace{2em}
 		\vfill
 	\end{enumerate}
@@ -279,31 +277,31 @@ Es una realidad que muchas de las empresas y proveedores de servicios de todo el
 \end{frame}
 
 
-\begin{frame}{Motivación y objetivos II}
-\vspace{-2em}
-\textit{Rohit Mehra} y \textit{Brad Casemore} en su previsión sobre SDN publicada en 2016:
-\vspace{1.3em}
+% \begin{frame}{Motivación y objetivos II}
+% \vspace{-2em}
+% \textit{Rohit Mehra} y \textit{Brad Casemore} en su previsión sobre SDN publicada en 2016:
+% \vspace{1.3em}
 
-%\textit{\say{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models.}}
+% %\textit{\say{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models.}}
 
-\begin{shadequote}{}
-\large\textit{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models.}
-\end{shadequote}
+% \begin{shadequote}{}
+% \large\textit{Virtualization, cloud, mobility, and now the Internet of Things (IoT) have exposed the limitations of traditional network architectures and operational models.}
+% \end{shadequote}
 
-%\begin{shadequote}[r]{Douglas Adams}
-%A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
-%\end{shadequote}
+% %\begin{shadequote}[r]{Douglas Adams}
+% %A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
+% %\end{shadequote}
 
-%\begin{shadequote}[c]{Douglas Adams}
-%A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
-%\end{shadequote}
+% %\begin{shadequote}[c]{Douglas Adams}
+% %A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
+% %\end{shadequote}
 
-%\begin{shadequote}{}
-%A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
-%\end{shadequote}
+% %\begin{shadequote}{}
+% %A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
+% %\end{shadequote}
 
-\note[item]{\textcolor{red}{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}}
-\end{frame}
+% \note[item]{\textcolor{red}{VER SI AÑADO ESTA DIAPO O NO, DECIDIRLO CUANDO TENGA TODAS LAS DIAPOS HECHAS, PARA VER SI SON DEMASIADAS. OCUPARÍA 15 SEGUNDOS EXPLICAR ESTA DIAPO, POR TIEMPO NO HABRÍA PROBLEMA}}
+% \end{frame}
 
 
 % DIAPOSITIVA DEL HISTOGRAMA SOBRE LA ADOPCIÓN DE SDN
@@ -372,18 +370,40 @@ nodes near coords align={horizontal},
 \begin{frame}{Motivación y objetivos IV}
 \vspace*{-2em}
 \begin{alertblock}{\LARGE\textbf{OBJETIVOS}}
+\large
 \begin{itemize}
+
 	\vspace{1.2em}
-	\item[\textbf{>>}] Exponer dos casos de uso real de las redes SDN.
-	\vspace{1.3em}
-    \item[\textbf{>>>>}] Aplicar técnicas de ingeniería de tráfico en dichos casos.
+	
+    \item[\textbf{>>}] Exponer dos casos de uso las redes SDN.
+	
     \vspace{1.3em}
-	\item[\textbf{>>>>>>}] Implementarlos en Mininet haciendo uso del controlador \texttt{Ryu} y un script en \texttt{Python}.
+    
+    \item[\textbf{>>>>}] Aplicar técnicas de ingeniería de tráfico en dichos casos.
+    
+    \vspace{1em}
+	
+    \item[\textbf{>>>>>>}] Implementarlos en en un emulador con visión hacia la docencia.
 \end{itemize}
 \end{alertblock}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item 2 CASOS DE USO
+			\vspace{2em}	
+			\item APLICAR TE EN LOS CASOS
+			\vspace{2em}
+            \item  IMPLEMENTAR EN EMULADOR, USAR PARA DOCENCIA
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SECCIÓN NUEVA: Conceptos teóricos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conceptos teóricos}
 
 
@@ -415,7 +435,7 @@ nodes near coords align={horizontal},
 
 
 
-\begin{frame}{Estado del arte}
+\begin{frame}{Redes Definidas por Software (SDN)}
 \vspace{1.1em}
 \begin{figure}[h!]
 \centering
@@ -523,27 +543,22 @@ nodes near coords align={horizontal},
 \caption{Arquitectura de alto nivel SDN.}
 \label{fig: capas_sdn}
 \end{figure}
-\note{\tiny \vfill
+\note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-        \item La Open Networking Foundation define una arquitectura de alto nivel para SDN con tres capas o planos principales, como se muestra en la figura.
+        \item Se divide en 3 CAPAS/PLANOS
 			\vspace{1.5em}	
-			\item SDN separa Plano de Control - Plano de Datos
+			\item  separación Plano de Control - Plano de Datos
 			\vspace{1.5em}	
 			\item Simplifica la operación en el plano de datos -> dispositivos de red menos costosos.
 			\vspace{1.5em}
-            
 			\item Centraliza el control (toma de decisiones) en la red.
             %centraliza el estado de la red y la toma de deqcisiones
 			\vspace{1.5em}	
-            
-			\item Programabilidad de la red, administración simplificada y autónoma.
-			\vspace{1.5em}	
-            
+  
 			\item Estimula la aplicacion \Rightarrow abre mercados y oportunidades para todo el sector.
 			\vspace{1.5em}	
             
-			\item \textcolor{blue}{COMPROBAR SI EXISTEN MÁS DIAPOS CON EL MISMO TITULO PARA PONER: I, II, III, IV, V, ...}
 			\vspace{1.5em}	
 			\vfill
 		\end{enumerate}
@@ -559,7 +574,7 @@ nodes near coords align={horizontal},
 
 
 
-\begin{frame}{Configuración física}
+\begin{frame}{Entorno de desarrollo}
 \vspace*{2em}
 \begin{figure}[h!]
 \centering
@@ -615,7 +630,7 @@ nodes near coords align={horizontal},
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item Explicar de fuera a dentro PC->vBox->Ubuntu->{Ryu,Mininet}
+			\item  MININET->RYU->Ubuntu->VBOX->PC
 			\vspace{2em}	
 			%\item 
 			%\vspace{2em}
@@ -623,7 +638,6 @@ nodes near coords align={horizontal},
 		\end{enumerate}
 \end{center}}
 
-\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
 \end{frame}
 
 
@@ -635,15 +649,24 @@ nodes near coords align={horizontal},
 \vspace*{-2em}
 \begin{alertblock}{\LARGE\textbf{OpenFlow}}
 \vspace{1.2em}
+\large
 Protocolo estandarizado por Open Networking Foundation en
 2013 que define la comunicación hacia el sur (Southbound) entre un controlador y un switch OpenFlow.
 \end{alertblock}
-
+\large
 El tráfico se clasifica en flows en función de sus características.  
 
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  Protocolo que define la comunicación entre switch y controlador.
+			\vspace{2em}	
+			\item Tráfico se clasifgica en flujos en función de sus caracteristicas. -> ENLAZA CON LA SIGUIENTE DIAPO. 
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
 
-\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
 \end{frame}
 
 
@@ -743,27 +766,39 @@ El tráfico se clasifica en flows en función de sus características.
 	\caption{Switch OpenFlow. Operación básica.}
 	\label{fig: openflow_basic}
 \end{figure}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item  Dependiendo de estas caracteristas, cuando un switch recibe un flow se pasa por una función de reconocimiento de paquetes y según su resultado, se envía bien al puerto de salida del swithc para seguir con su reenvío, se informa al controlador o bien se descarta el paquete.-
+			\vspace{2em}	
+			\item ESTÁS FUNCIONES PUEDEN SER MÁS O MENOS COMPLEJAS EN FUNCIÓN DE LAS TÉCNICAS DE INGENIERÍA DE TRÁFICO QUE APLIQUEMOS -> SIG DIAPO. 
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
 \end{frame}
 
 
 
-\begin{frame}{Elementos}
-\begin{alertblock}{\LARGE}
-\begin{itemize}
-\large
-	\item \textbf{Ryu}
-    \vspace*{1em}
-	\item \textbf{VirtualBox}
-	\vspace*{1em}
-	\item \textbf{Mininet}
-	\vspace*{1em}
-    \item \textbf{iPerf}
-\end{itemize}
-\end{alertblock}
-\note[item]{Contar para que se he usado cada uno.}
-\note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
-\end{frame}
+% \begin{frame}{Elementos}
+% \begin{alertblock}{\LARGE}
+% \begin{itemize}
+% \large
+% 	\item \textbf{Ryu}
+%     \vspace*{1em}
+% 	\item \textbf{VirtualBox}
+% 	\vspace*{1em}
+% 	\item \textbf{Mininet}
+% 	\vspace*{1em}
+%     \item \textbf{iPerf}
+% \end{itemize}
+% \end{alertblock}
+% \note[item]{Contar para que se he usado cada uno.}
+% \note[item]{\textcolor{blue}{COMPROBAR QUE LOS TITULOS DE ESTAS DIAPOS ESTÁN BIEN: I, II, III, IV, V, ...}}
+% \end{frame}
+
+
+
 % DESPUES DE CORREGIR EL TFG NO EXISTE ESTA SECCIÓN.
 % \begin{frame}
 % \section{Definición del escenario de aplicación}
@@ -790,13 +825,21 @@ Es una aplicación de red importante que estudia
 la medición y gestión del tráfico.
 \vspace{0.6em}
 
-Diseña mecanismos de enrutamiento para guiar el tráfico de red a fin de mejorar la utilización de los recursos y cumplir mejor los requisitos de QoS.
+Diseña mecanismos de enrutamiento para guiar el tráfico de red a fin de mejorar la utilización de los recursos y cumplir mejor los requisitos de calidad de servicio (QoS).
 \end{alertblock}
-\note[item]{\textcolor{red}{ESTAS NOTAS YA SE HABRÁN CONTANDO EN DIAPOS ANTERIORES, EN LO QUE ES SDN. PERO BUENO, NO PASA NADA POR REPETIR QUE ESAS CARACTERISTICAS QUE TIENE SDN VAN BIEN PARA LA ING. TRÁFICO.}}
 
-\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
-\note[item]{En comparación con las redes tradicionales, SDN tiene muchas ventajas para ser compatible con TE debido a sus características distintivas, como el aislamiento de
-los planos de control y datos, el control centralizado global y la programabilidad del comportamiento de la red.}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}
+			\item Diseña mecanismos de enrutamiento para  guiar el tráfico con el fin de MEJORAR UTILIZACIÓN DE RECURSOS y cumplir requisitos QoS.
+			\vspace{2em}	
+			\item En comparación con las redes tradicionales, SDN tiene muchas ventajas para ser compatible con TE debido a sus características distintivas
+			\vspace{2em}	
+			\item islamiento de los planos de control y datos, control centralizado y la PROGRAMABILIDAD.
+			\vspace{2em}
+			\vfill
+		\end{enumerate}
+\end{center}}
 \end{frame}
 
 \begin{frame}{Calidad de servicio - QoS}
@@ -811,25 +854,29 @@ Los administradores de red pueden usar los recursos existentes de manera eficien
 \item[\rightarrow]Sin expandir de forma reactiva ni aprovisionar en exceso o sobredimensionar sus redes.
 \end{itemize}
 \end{alertblock}
+
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item El concepto de calidad de QoS es aquel en el que los requisitos de algunas aplicaciones y usuarios son más críticos que otros, lo que significa que parte del tráfico necesita un tratamiento preferencial.
+			\item Existen aplicaciones y usuarios son más críticos que otros, lo que significa que parte del tráfico necesita un tratamiento preferencial.
 			\vspace{2em}	
-			\item OBJETIVO: proporcionar un servicio de entrega preferencial para las aplicaciones que lo necesitan asegurando un ancho de banda suficiente, controlando la latencia y reduciendo la pérdida de datos.
+			\item aseguran un ancho de banda , controlan la LATENCIA y reduciendo la pérdida de datos.
 			\vspace{2em}
+            	\item Evitar el sobredimensionamiento de la red.
+			\vspace{2em}
+            
 			\vfill
 		\end{enumerate}
 \end{center}}
-
-\note[item]{\textcolor{red}{PONER LA LETRA MAS GRANDE? (large) PARA LAS DIAPOS COMO ESTAS? CON TEXO. O SINO PARA EL TEXTO DE TODAS LAS DIAPOS. VERLO UNA VEZ ACABADO TODO.}}
 \end{frame}
+
 
 %%%%%%%%%%%%% ESCENARIOS EXISTENTES.
 
 \begin{frame}{Escenarios existentes}
 \vspace*{-2em}
 \begin{alertblock}{\LARGE}
+\large
 \begin{itemize}
 	\item Los balanceadores de carga usan hardware dedicado.
 	\begin{itemize}
@@ -848,12 +895,11 @@ Los administradores de red pueden usar los recursos existentes de manera eficien
 	\begin{center}
 		\begin{enumerate}
 			\item Hoy en día Redes -> mucho tráfico (miles clientes y cumplir requisitos)
-            \item 1 servidor no soporta esa carga -> Varios servidores con Balanceador.
             \item Clientes envían al balanceador. Este reenvía a los servidores según su estrategia.
 			\vspace{2em}	
-			\item Los administradores de red no pueden usar su propios algoritmos de balanceo.
+			\item los LB son Costosos, Pocos algoritmos, no programables
 			\vspace{2em}
-			\item fácil si es un area local. Red extensa es una MOVIDA.
+			\item QOS SE IMPLEMENTA EN ROUTERS(uno a uno), dificil en una red extensa.
 			\vspace{2em}            
 			\vfill
 		\end{enumerate}
@@ -885,12 +931,15 @@ Los administradores de red pueden usar los recursos existentes de manera eficien
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item Soluciona el problema de la red a mayor escala.
-			\item los routers que se encarguen de sus cometidos.
+			\item LB - hace de LB un switch (no se necesita hardware dedicado)
+      		\vspace{2em}	
+			\item LB - Son PROGRAMABLES-> estrategias propias
+      		\vspace{2em}	
+			\item QOS - fuera inteligencia en ruters (se encarguen de reenvíar sol).
 			\vspace{2em}	
-			\item Se facilita la gestión de una forma eficaz de QoS en toda la red.
+			\item  QOS - desde un mismo punto se controla todo DINAMICAMENTE.
 			\vspace{2em}
-            \item ¡¡¡¡¡Se puede cambiar en cualquier momento las normas QoS dinámicamente!!!!!! 
+            \item QOS - Se cambia DINAMICAMENTE.
             \vspace{2em}
             \vfill
 		\end{enumerate}
@@ -902,6 +951,12 @@ Los administradores de red pueden usar los recursos existentes de manera eficien
 
 %%%%%%%%%%%%%%%% Balanceador de carga con routing multicamino	
 \begin{frame}{Balanceador de carga con routing multicamino}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.93\textwidth]{Imagenes/pez.png}
+	\caption{Problema del pez.}
+\end{figure}
+
 \vspace*{-2em}
 El balanceador de carga con routing multicamino es uno de los casos de uso más comunes e implementados de SDN. 
 \vspace{0.6em}
@@ -911,13 +966,13 @@ En nuestro caso, se desarrolla en un script en \textit{Python} que hemos llamado
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item No se profundiza del todo -> es uno de los más usados y documentados.
+			\item Uno de los casos más implementados en SDN.
 			\vspace{2em}	
-            \item  	
+            \item  	2 partes : BALANCEADOR - MULTICAMINO
 			\vspace{2em}	
-			\item Luego se verá como ejecutarlo y comprobar que funciona. ahora analizaremos la parte teórica.
+			\item SE NECESITAN LOS CAMINOS PARA APLICAR DESPUÉS EL BALANCEO ASÍ QUE EN EL ROUTING MULTICAMINO --> SIGUIENTE DIAPO.
 			\vspace{2em}
-			\vfill
+			\vfill 
 		\end{enumerate}
 \end{center}}
 \end{frame}
@@ -939,14 +994,10 @@ Técnica que explota los recursos de la red mediante la propagación del tráfic
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item Existen 3 partes: descubrimiento, distribución de trafico y mantenimiento de rutas
+			\item SE BASA EN LA PROPAGACIÓN DEL TRÁFICO DE UN NODO A OTRO POR MEDIO DE MULTIPLES RUTAS.
 			\vspace{2em}	
-			\item Nos centramos en el decubrimiento.La distribución del tráfico se hará de acuerdo a lo que queremos implementar, un balanceador de carga, así que repartiremos el tráfico por igual
-a través de las rutas encontradas y consideraremos que los caminos existentes se
-mantienen fijos durante la realización de este trabajo.
+			\item  E.G. balanceo, agregación de BW, Minimizar retardo, Aumentar tolerancia a fallos.
 			\vspace{2em}
-			\item \textcolor{red}{VER SI AÑADO UNA DIAPO MAS CON LO DE LAS 3 PARTES IMPORTANTE,SOLO SI NECESITO MAS DIAPOS (LO DUDO).}
-            \vspace{2em}
             \vfill
             
 		\end{enumerate}
@@ -972,12 +1023,12 @@ Los algoritmos de \alert{\textbf{Pathing}} son los encargados de obtener la ruta
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-        	\item se basan en Dijkstra->camino más corto en grafo con pesos.
+        	\item Se basan en encontrar la ruta más corta entre dos puntos
 			\vspace{2em}
-            \item  A diferencia de Dijkstra, que no agota todas las posibilidades.
+            \item  DFS BFS agotan todas las posibilidades.
 			\item BFS-Búsqueda en Anchura, DFS-Búsqueda profundidad.
             \vspace{2em}	
-			\item N=Nºnodos, E=Nºenlaces entre los nodos de la red. 
+			\item VENTAJA se EJECUTAN en TIEMPO LINEAL
 			\vspace{2em}
        
 			\vfill
@@ -998,9 +1049,9 @@ Los algoritmos de \alert{\textbf{Pathing}} son los encargados de obtener la ruta
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item ELEGIDO PARA ESTE TRABAJO.
+			\item ELEGIDO PARA ESTE TRABAJO, por el USO DE PILA
 			\vspace{2em}	
-			\item Útil por el uso de la pila, modificamos para encontrar las rutas posibles entre dos nodos.
+			\item BUSQUEDA EN PROFUNDIDAD -> como se observa en la siguiente DIAPO.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1314,10 +1365,13 @@ Los algoritmos de \alert{\textbf{Pathing}} son los encargados de obtener la ruta
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item Para grafos dirigidos el proceso es análogo, sólo cambia el significado de ''adyacencia"
+			\item ITERACIONES DFS hasta encontrar el destino.
 			\vspace{2em}	
-			\item Se van visitando los nodos y se marcan como visitados.
+			\item En orden descendiente, se visita el vecino del origen, despues el vecino del vecino..
+			\vspace{2em}	
+			\item NO ACABA AQUÍ,  se volvería atrás al ultimo nodo que queda en la pila (E).
 			\vspace{2em}
+            
 			\vfill
 		\end{enumerate}
 \end{center}}
@@ -1332,7 +1386,7 @@ Los algoritmos de \alert{\textbf{Pathing}} son los encargados de obtener la ruta
 Tenemos que medir el coste de los caminos o rutas:
 \begin{enumerate}
 \item Calcular todos los costes de enlaces que haya en la ruta.\\ \vspace*{0.5em}  {\large $Cost(l) = \frac{BW_{Reference}}{BW(l)}\quad\mathrm{;}\quad$} 
-\\ \vspace*{0.5em} {\large $BW(l) = \min\hspace{0.4em}(\hspace{0.2em}BW_{Switch1}, BW_{Switch2}\hspace{0.2em})$}
+\\ \vspace*{0.5em} {\large $BW(l) = min\hspace{0.4em}(\hspace{0.2em}BW_{Switch1}, BW_{Switch2}\hspace{0.2em})$}
 \vspace{1em}
 \item Calcular el coste total de la ruta (sumar los costes de enlaces).
 \end{enumerate}
@@ -1340,6 +1394,8 @@ Tenemos que medir el coste de los caminos o rutas:
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
+			\item DFS DEVUELVE LAS RUTAS, PERO SIN PESOS. 
+			\vspace{2em}
 			\item Calculamos el coste como en OSPF (protocolo de red) 
 			\vspace{2em}	
 			\item  BW enlace = BW de la interfaz de un switch.
@@ -1358,10 +1414,15 @@ Tenemos que medir el coste de los caminos o rutas:
 \vspace*{-0.1em}
 \begin{alertblock}{\large \emph{Group}\rightarrow \emph{Group table}\rightarrow \emph{buckets (bucket weight)}\rightarrow \emph{acciones}}
 \vspace*{1em}
+\begin{wrapfigure}{l}{0.45\textwidth}
+	\centering
+	\vspace{-1.5em}
+	\includegraphics[width=0.45\textwidth]{figuras/gruposs.png}
+	\caption{Grupo OpenFlow.}
+	\label{img: grupo_openflow}
+	\vspace*{-0.8em}
+\end{wrapfigure}
 Los \emph{Grupos} en OpenFlow representan una serie de puertos como una entidad única para el envío de paquetes. Existen varios tipos de grupos, interesándonos los \emph{Select} para el multicamino. 
-\vspace*{0.6em}
-
-Cada grupo consta de una \emph{Group table} formada de entradas, \emph{buckets}, y cada \emph{bucket} contiene una serie de acciones que se aplican antes de enviar el paquete por el puerto de salida del \emph{bucket} seleccionado, que será el de mayor \emph{bucket weight}.
 \vspace*{1em}
 
 \large$bw(p) = \left( 1 - \frac{Cost(p)}{\sum_{i=0}^{i<n} Cost(i)}\right)\times{10}$
@@ -1369,16 +1430,11 @@ Cada grupo consta de una \emph{Group table} formada de entradas, \emph{buckets},
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-		    \item  Contrario al coste, dónde menor coste es mejor, aquí es al revés.
+		    \item Openflow no entiende costes, sino BUCKET WEIGHTS, CONTRARIOS AL COSTE.
 			\vspace{2em}
             \item Tenemos por tanto que solucionar el problema que nos surge, ajustar el criterio
-de los bucket weights con los costes de las ruta
-			\vspace{2em}
-            \item  Select solo se ejecuta un bucket.
-			\vspace{2em}
-			\item  p=path,ruta.  bw(p)=entre 0 y 10
-			\vspace{2em}
-            \item  si un switch tuviera dos puertos con enlace, pondríamos cada uno de esos puertos como un bucket en la group table.
+de los bucket weights con los costes de las ruta.	\vspace{2em}
+            \item Una vez ajustado el cambio, toca la implementación-->SIGUIENTE DIAPO.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1387,12 +1443,19 @@ de los bucket weights con los costes de las ruta
 
 
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SECCIÓN NUEVA: Conclusiones y líneas futuras
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Implementación}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Requirements
-\begin{frame}{Requirements}
+\begin{frame}{Requisitos}
 \vspace*{-2em}
-\begin{exampleblock}{\LARGE Requirements}
+\begin{exampleblock}{\LARGE Requisitos}
 \begin{center}
 \begin{enumerate}
 \large
@@ -1402,21 +1465,17 @@ de los bucket weights con los costes de las ruta
 \vspace*{0.5em}
 \item \texttt{Ryu v4.0} o superior. 
 \vspace*{0.5em}
-\item \texttt{iPerf} e \texttt{iPerf3}\end{enumerate}
+\item \texttt{iPerf} \end{enumerate}
 \end{center}
 \end{exampleblock}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item  18.04 ha salido hace poco (compatible).
+			\item  Requisitos necesarios para realizar el experimento.
 			\vspace{2em}	
 			\item  Que tenga miniedit.
 			\vspace{2em}
 			\item  Actualizaciones en la API.
-			\vspace{2em}	
-            \item  uno para cada caso.
-            \vspace{2em}
-			\item \textcolor{red}{CUIDADO, ESTA DIAPO ES IGUAL QUE UNA DE LAS PRIMERAS (PENSAR SI QUITO LA PRIMERA Y DEJO ESTA O QUE...)}
             \vspace{2em}
             \vfill 
             
@@ -1440,13 +1499,11 @@ de los bucket weights con los costes de las ruta
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item Como el mostrado anteriormente pero más detallado 
+			\item De dentro a fuera (MININET->RYU->UBUNTU->VBOX..)
 			\vspace{2em}
-			\item igual para los dos casos de uso, solo cambia que en uno se usa Miniedit.
+			\item igual para los dos casos de uso
 			\vspace{2em}	
-            \item SUPONEMOS QUE YA TENEMOS CONFIGURADO/INSTALADO TODO LO DE LA FIGURA.
-			\vspace{2em}	
-			\vfill
+            \vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
@@ -1457,7 +1514,7 @@ de los bucket weights con los costes de las ruta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Balanceador de carga multicamino I
 \begin{frame}{Balanceador de carga multicamino I}
 \vspace*{-1em}
-\begin{exampleblock}{\centering Definición del escenario de aplicación}
+\begin{exampleblock}{\centering \large Definición del escenario de aplicación}
 \end{exampleblock}
 %\begin{figure}[h!]
 %	\centering
@@ -1484,8 +1541,6 @@ de los bucket weights con los costes de las ruta
 			\item  Primer caso de uso.
 			\vspace{2em}
 			\item  Diseñamos en Miniedit y configuramos el controlador. IP  loopback, puerto 6633, remote controller y OpenFlow 1.3
-			\vspace{2em}
-            \item  Ping H1-H2 para ver que funciona.
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1517,11 +1572,11 @@ de los bucket weights con los costes de las ruta
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item  Se vería solo hasta se ha llamado. para los swtiches. Despues hacemos un ping para que se tenga constancia de los hosts.
+			\item  Una vez diseñada la topología, iniciamos el controlador para que descubra las rutas.
+			\vspace{2em}	
+			\item Las rutas se descubren hasta que no se realiza un ping H1-H2
 			\vspace{2em}	
 			\item ir a la diapo anterior y que las rutas concuerdan.
-			\vspace{2em}
-            \item  Costes (se ha puesto que el ancho de banda del enlace sea el mismo que el de referencia, así el coste de enlace es 1, y coste total=nº enlaces).
 			\vspace{2em}
 			\item  Salen los caminos de ida y vuelta porque suponíamos que eran bidireccionales
 			\vspace{2em}
@@ -1544,13 +1599,12 @@ de los bucket weights con los costes de las ruta
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-        \item  Veamos si las rutas encontradas han sido instaladas en s5. Este es el primer paso. haremos flows->grupos-> buckets->actions
+        \item  veamos si las rutas HAN SIDO INSTALADAS EN S5. Este es el primer paso. haremos flows->grupos-> buckets->actions
 			\vspace{2em}
 	        \item Cada flow se encarga del matching de pkts IP y ARP (uno de cada)
             \vspace{2em}
-            \item Se ridirigen los dos al mismo group:...
-			\vspace{2em}
-            \item \textcolor{red}{YO QUITABA ESTA DIAPO Y PONIA DIRECTAMENTE LA SIGUIENTE, LA DE LOS GROUPS (SON DEMASIADAS DIAPOS SI NO).}
+            \item Se ridirigen los dos al mismo grupo:-> Siguiente DIAPO
+			
             \vspace{2em}	
 			\vfill
 		\end{enumerate}
@@ -1578,11 +1632,11 @@ de los bucket weights con los costes de las ruta
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item  Hay un solo grupo con 2 buckets en la Group Table
+			\item Este es el grupo, que tiene 2 buckets en la Group Table.
 			\vspace{2em}	
-			\item bucket weight se corresponde con el coste: 2/3=4/6=> 2/(2+3)=4/(4+6)=0.4
+			\item bucket weight se corresponde con el coste: 2/3=4/6
 			\vspace{2em}
-			\item  
+            	\item UNA VEZ COMPROBADO TODO --> CREAMOS TRÁFICO (SIGUIENTE DIAPO).
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1632,9 +1686,11 @@ de los bucket weights con los costes de las ruta
 		\begin{enumerate}
 			\item  Creamos tráfico TCP con iPerf. 50 clientes en paralelo.
 			\vspace{2em}	 
-			\item  en Open vSwitch ultimas versiones para trafico TCP se realiza un hash simetrico (igual ambos sentidos) con los puertos de origen y destino y se elige el bucket teniendo en cuenta el hash (hash1->rutaX siempre...) 
+			\item  si solo usamos un cliente, se usaría una sola ruta y no podriamos balancear. 
 			\vspace{2em}
 			\item  mirando la figura de la derecha (CLIENTE) se ve como se conectan los clientes cada uno con su puerto (port 56300, port 56224,...)
+			\vspace{2em}
+			\item  Una vez creado trafico --> COMPROBAMOS BALANCEO (SIGUIENTE DIAPO)
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1648,19 +1704,21 @@ de los bucket weights con los costes de las ruta
 
 {\nologo %quito el logo porque queda cortado con la imagen.
 \begin{frame}{Balanceador de carga multicamino VI}
-\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
+\begin{exampleblock}{\centering \large Comprobación del balanceo de carga.}
+\vspace*{-0.5em}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1\textwidth]{Imagenes/dump_ports_balanceado.png}
+	\includegraphics[width=1\textwidth]{Imagenes/untitled3.png}
 \end{figure}
 %%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
 \end{exampleblock}
+\vspace*{-2em}
 \begin{center}
 	\begin{description}%[<+- | alert@+>] % para mostar uno a uno.
 		\large
-		\item[\textit{Ruta 1}]  $Traffic(1)=\frac{Tx2}{Rx3}\times{100}=\frac{13448402}{21746866}\times{100}=61,83\% $
+		\item[\textit{Ruta 1}]  $Traffic(1)=\frac{Tx2}{Rx3}\times{100}=62\% $
 	
-		\item[\textit{Ruta 2}] $Traffic(2)=\frac{Tx1}{Rx3}\times{100}=\frac{8304407}{21746866}\times{100}=38,18\% $
+		\item[\textit{Ruta 2}] $Traffic(2)=\frac{Tx1}{Rx3}\times{100}=38\% $
 	\end{description}
 \end{center}
 
@@ -1692,7 +1750,7 @@ de los bucket weights con los costes de las ruta
 \begin{frame}{Monitorización del tráfico con cierta QoS I}
 %\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
 
-	Hoy en día la mayoría de las redes hacen uso de la calidad de servicio (QoS). 
+	Hoy en día la mayoría de las redes hacen uso de la calidad de servicio. 
     \begin{itemize}
     \item[\rightarrow] SDN debe ofrecer al menos
 los mismos servicios y aplicaciones que las redes tradicionales.
@@ -1732,60 +1790,58 @@ los mismos servicios y aplicaciones que las redes tradicionales.
 \end{table}
 \note{\large \vfill
 	\begin{center}
-		\begin{description}
-			\item[ESTANDAR]\textbf{1a fase}: 2 MB de datos a 1 Mbps. \textbf{2a fase}: 2 MB se reduce el 80\% para el siguiente 1 MB. \textbf{3a fase}: gastando los 3 MB, se queda sin poder transmitir ni recibir datos (i.e. la velocidad será 0 Kbps)
-			\vspace{2em}	
-			\item[PREMIUM] Datos ilimitados todo el mes, Vmin=2Mbps.
+		\begin{enumerate}
+			\item Caso de uso incorpora QoS para ver que fácil se implementa en SDN.
 			\vspace{2em}
-			\item Caso de uso incorpora QoS en una red SDN para ver que facil se implementa.. Se pretende
-enseñar cómo, mediante QoS, se pueden transferir los datos de una red en función
-de la prioridad basada en los tipos de datos, y reservar ancho de banda para una
-comunicación con el objetivo de comunicar dos puntos con un constante ancho de
-banda en la red.
+            \item se pretende mostrar como se pueden transferir los datos de una red en función de la prioridad basada en el origen de los datos (usuarios).
+       		\vspace{2em}	
+            \item además reservar ancho de banda para una comunicación con el objetivo de unir dos puntos con un constante ancho de banda.		
+            \vspace{2em}	
+            \item Se implementa la tarifa ESTANDAR ya que es la más compleja.
+            %\item[ESTANDAR]\textbf{1a fase}: 2 MB de datos a 1 Mbps. \textbf{2a fase}: 2 MB se reduce el 80\% para el siguiente 1 MB. \textbf{3a fase}: gastando los 3 MB, se queda sin poder transmitir ni recibir datos (i.e. la velocidad será 0 Kbps)
+			%\item[PREMIUM] Datos ilimitados todo el mes, Vmin=2Mbps.
 			\vspace{2em}
 			\vfill
-		\end{description}
+		\end{enumerate}
 \end{center}}
 \end{frame}
 %} %fin de \nologo
 
 
 
-
-
-
-
-
-
-
-
-
 %%%%%%%%%%%%%% MONITORIZACIÓN DEL TRÁFICO CON CIERTA QoS II
-{\nologo %quito el logo porque queda cortado con la imagen.
 \begin{frame}{Monitorización del tráfico con cierta QoS II}
-%\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1\textwidth]{Imagenes/dump_ports_balanceado.png}
-\end{figure}
-%%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
+\vspace*{2em}
+\begin{exampleblock}{\large Uso de Colas en OpenFlow}
+\vspace*{1em}
+Cada cola se corresponde con una fase de la tarifa, por lo que se crean tres colas, cada una con un id diferente.
+\begin{itemize}
+\item[\rightarrow] Se establece el cambio entre las fases mediante programación.
+\end{itemize}
+Prioridades de las colas:
+\begin{description}
+\item[Cola 0]{Prioridad 0}
+\item[Cola 1]{Prioridad 1}
+\item[Cola 2]{Prioridad 2}
+\end{description}
 
-%\end{exampleblock}
+\end{exampleblock}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item 
+			\item  Para llevarlo a la práctica, se hace uso de las colas o queues en OpenFlow.
 			\vspace{2em}	
-			\item 
+			\item En el script se supone que ya existen y están configuradas dichas colas (las creamos antes de ejecutar el script).
+
 			\vspace{2em}
-			\item 
+			\item  Las prioridades hacen que por eso se empiece en la cola 0 y se vaya cambiando a la 1 y a la 2.
+			\vspace{2em}	
+            \item  \textcolor{red}{SE INICIA EL CONTROLADOR IGUAL QUE EN EL OTRO CASO PERO CON TARIFAS.PY}
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
-} %fin de \nologo
-
 
 
 
@@ -1798,9 +1854,14 @@ banda en la red.
 {\nologo %quito el logo porque queda cortado con la imagen.
 \begin{frame}{Monitorización del tráfico con cierta QoS III}
 %\begin{exampleblock}{\centering Comprobación del balanceo de carga.}
+\vspace*{1.5em}
+\begin{figure}[h!]
+	%\centering
+	\includegraphics[width=0.8\textwidth,left]{Imagenes/arrancar_mininet.png}
+\end{figure}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1\textwidth]{Imagenes/dump_ports_balanceado.png}
+	\includegraphics[width=1\textwidth]{Imagenes/colas.png}
 \end{figure}
 %%%%% PARA IR MOSTRANDO LAS RUTAS, SUS COSTES Y DEMÁS. 1 A 1.
 
@@ -1808,11 +1869,11 @@ banda en la red.
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item 
+			\item  Toca por tanto, arrancar Mininet y configurar las colas
 			\vspace{2em}	
-			\item 
+			\item 3 colas, 1Mbps, 200ks, 0. (tarifa standar)
 			\vspace{2em}
-			\item 
+			\item  Output del comando nos devuelve SUCCESS (exito).
 			\vspace{2em}
 			\vfill
 		\end{enumerate}
@@ -1824,54 +1885,115 @@ banda en la red.
 
 
 
-
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
+%%%%%%%%%%%%%% MONITORIZACIÓN DEL TRÁFICO CON CIERTA QoS IV
+\begin{frame}{Monitorización del tráfico con cierta QoS IV}
+\begin{alertblock}{\centering \Huge \textbf{VÍDEO}}
+\end{alertblock}
 \note{\large \vfill
 	\begin{center}
 		\begin{enumerate}
-			\item  
+			\item  Min 02:57
 			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
 			\vfill
 		\end{enumerate}
 \end{center}}
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{AAAAA}
-\vspace*{-2em}
-\begin{exampleblock}{AA}
-\begin{enumerate}
-\item
-\vspace{1em}
-\item\end{enumerate}
-\end{exampleblock}
-\note{\large \vfill
-	\begin{center}
-		\begin{enumerate}
-			\item  
-			\vspace{2em}	
-			\item  
-			\vspace{2em}
-			\item  
-			\vspace{2em}
-			\vfill
-		\end{enumerate}
-\end{center}}
-\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SECCIÓN NUEVA: Conclusiones y líneas futuras
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusiones y líneas futuras}
+%%%%%%%%%%%%%% Conclusiones I
+\begin{frame}{Conclusiones}
+\vspace*{1em}
+\large
+\begin{alertblock}{\Large \textbf{SDN es una clara alternativa que demandan los operadores de red.}}
+\vspace{1em}
+\begin{itemize}
+\item Las técnicas de ingeniería de tráfico pueden hacer uso de SDN.
+\item  Se ha demostrado el uso de SDN para implementar un balanceador de carga y calidad de servicio.
+\item Se ha desarrollado un entorno de simulación que puede ser utilizado con fines docentes.
+\end{itemize}
+\end{alertblock}
+%\begin{exampleblock}{Conclusiones}
+%\end{exampleblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}	
+			\item Tecnicas TE pueden hacer uso de SDN
+			\vspace{2em}
+			\item  Se han abordado dos aplicaciones que usan técnicas TE en SDN y se ha visto reflejada su rápida implementación y fácil aprendizaje.
+			\vspace{2em}
+			\item  Entorno de simulación con fines docentes.
+			\vspace{2em}
+            \vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+%%%%%%%%%%%%%% Líneas futuras
+\begin{frame}{Líneas futuras}
+\vspace*{-1em}
+\large
+\begin{alertblock}{\Large Líneas futuras  destacadas}
+\vspace*{1em}
+\begin{itemize}
+\item Otros tipos de casos de uso que incorporen técnicas de ingeniería de tráfico en SDN.
+\item Investigación de nuevas técnicas de ingeniería de tráfico.
+\item Nuevas aplicaciones  SDN
+\item Seguridad en SDN.
+\end{itemize}
+\end{alertblock}
+\note{\large \vfill
+	\begin{center}
+		\begin{enumerate}	
+			\item Otros casos de uso con TE en SDN
+            \vspace{2em}
+ 			\item Investigación sobre nuevas Tec. TE.
+            \vspace{2em}
+ 			\item Nuevas aplicaciones SDN
+            \vspace{2em}
+            \item Seguridad (unico punto de fallo, el controlador).
+   
+            \vfill
+		\end{enumerate}
+\end{center}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% PREGUNTAS
+\begin{frame}[standout]
+\Huge ?`Preguntas?
+\end{frame}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
